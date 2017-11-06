@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F11FB04E00005E4A98 /* LoginViewController.swift */; };
+		C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F41FB0588B005E4A98 /* SignUpViewController.swift */; };
+		C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */; };
+		C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */; };
+		C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */; };
+		C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFD51FB04BE50092BEE2 /* BottomBorderTextField.swift */; };
 		C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF25801FB045590067B1C8 /* AppDelegate.swift */; };
 		C0AF25831FB045590067B1C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF25821FB045590067B1C8 /* ViewController.swift */; };
 		C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25841FB045590067B1C8 /* Main.storyboard */; };
@@ -15,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C01956F11FB04E00005E4A98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C01956F41FB0588B005E4A98 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldNavigationDelegate.swift; sourceTree = "<group>"; };
+		C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTextFieldView.swift; sourceTree = "<group>"; };
+		C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationTextFieldView.xib; sourceTree = "<group>"; };
+		C0A8FFD51FB04BE50092BEE2 /* BottomBorderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderTextField.swift; sourceTree = "<group>"; };
 		C0AF257D1FB045590067B1C8 /* explore-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "explore-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF25801FB045590067B1C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0AF25821FB045590067B1C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +47,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C01956EF1FB04DD0005E4A98 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C01956F31FB05850005E4A98 /* userRegistration */,
+				C01956F01FB04DF2005E4A98 /* login */,
+			);
+			path = scenes;
+			sourceTree = "<group>";
+		};
+		C01956F01FB04DF2005E4A98 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				C01956F11FB04E00005E4A98 /* LoginViewController.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		C01956F31FB05850005E4A98 /* userRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				C01956F41FB0588B005E4A98 /* SignUpViewController.swift */,
+			);
+			path = userRegistration;
+			sourceTree = "<group>";
+		};
+		C0A8FFC91FB0488E0092BEE2 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C0A8FFD01FB049D40092BEE2 /* textField */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		C0A8FFD01FB049D40092BEE2 /* textField */ = {
+			isa = PBXGroup;
+			children = (
+				C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */,
+				C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */,
+				C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */,
+				C0A8FFD51FB04BE50092BEE2 /* BottomBorderTextField.swift */,
+			);
+			path = textField;
+			sourceTree = "<group>";
+		};
 		C0AF25741FB045590067B1C8 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +110,8 @@
 		C0AF257F1FB045590067B1C8 /* explore-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C01956EF1FB04DD0005E4A98 /* scenes */,
+				C0A8FFC91FB0488E0092BEE2 /* views */,
 				C0AF25801FB045590067B1C8 /* AppDelegate.swift */,
 				C0AF25821FB045590067B1C8 /* ViewController.swift */,
 				C0AF25841FB045590067B1C8 /* Main.storyboard */,
@@ -124,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0AF258B1FB045590067B1C8 /* LaunchScreen.storyboard in Resources */,
+				C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */,
 				C0AF25881FB045590067B1C8 /* Assets.xcassets in Resources */,
 				C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */,
 			);
@@ -136,6 +195,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */,
+				C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */,
+				C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */,
+				C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */,
+				C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */,
 				C0AF25831FB045590067B1C8 /* ViewController.swift in Sources */,
 				C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */,
 			);
