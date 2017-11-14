@@ -149,6 +149,9 @@
                                     <state key="normal" title="Button">
                                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="addButtonAction:" destination="chc-lA-z7g" eventType="touchUpInside" id="WNv-L7-hak"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.77303957030000003" green="0.62970284180000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

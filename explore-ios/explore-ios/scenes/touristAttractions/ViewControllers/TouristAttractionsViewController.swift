@@ -11,6 +11,12 @@ import UIKit
 class TouristAttractionsViewController: UITableViewController {
     
     @IBOutlet weak var addButton: UIButton!
+    @IBAction func addButtonAction(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "attractionDetailsViewController") as? TouristAttractionDetailsViewController {
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
     @IBOutlet weak var headerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
