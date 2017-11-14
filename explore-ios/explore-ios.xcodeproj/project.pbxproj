@@ -11,15 +11,16 @@
 		C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F41FB0588B005E4A98 /* SignUpViewController.swift */; };
 		C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051A1D51FBA271400E7925A /* TouristAttractions.swift */; };
 		C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */; };
-		C078CB001FB31FD20023CB25 /* TouristAttractionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFF1FB31FD20023CB25 /* TouristAttractionTableViewCell.swift */; };
 		C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB021FB320FB0023CB25 /* TouristAttraction.swift */; };
 		C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */; };
+		C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */; };
+		C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */; };
+		C084021B1FBAC82200FB662C /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C084021A1FBAC82200FB662C /* RatingControl.swift */; };
 		C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */; };
 		C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */; };
 		C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */; };
 		C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFD51FB04BE50092BEE2 /* BottomBorderTextField.swift */; };
 		C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF25801FB045590067B1C8 /* AppDelegate.swift */; };
-		C0AF25831FB045590067B1C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF25821FB045590067B1C8 /* ViewController.swift */; };
 		C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25841FB045590067B1C8 /* Main.storyboard */; };
 		C0AF25881FB045590067B1C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25871FB045590067B1C8 /* Assets.xcassets */; };
 		C0AF258B1FB045590067B1C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */; };
@@ -30,16 +31,17 @@
 		C01956F41FB0588B005E4A98 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C051A1D51FBA271400E7925A /* TouristAttractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractions.swift; sourceTree = "<group>"; };
 		C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsViewController.swift; sourceTree = "<group>"; };
-		C078CAFF1FB31FD20023CB25 /* TouristAttractionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionTableViewCell.swift; sourceTree = "<group>"; };
 		C078CB021FB320FB0023CB25 /* TouristAttraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttraction.swift; sourceTree = "<group>"; };
 		C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionDetailsViewController.swift; sourceTree = "<group>"; };
+		C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionCell.swift; sourceTree = "<group>"; };
+		C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouristAttractionCell.xib; sourceTree = "<group>"; };
+		C084021A1FBAC82200FB662C /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldNavigationDelegate.swift; sourceTree = "<group>"; };
 		C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTextFieldView.swift; sourceTree = "<group>"; };
 		C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationTextFieldView.xib; sourceTree = "<group>"; };
 		C0A8FFD51FB04BE50092BEE2 /* BottomBorderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderTextField.swift; sourceTree = "<group>"; };
 		C0AF257D1FB045590067B1C8 /* explore-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "explore-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF25801FB045590067B1C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0AF25821FB045590067B1C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0AF25851FB045590067B1C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0AF25871FB045590067B1C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0AF258A1FB045590067B1C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,10 +88,9 @@
 		C078CAFC1FB31D6A0023CB25 /* touristAttractions */ = {
 			isa = PBXGroup;
 			children = (
-				C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */,
-				C078CAFF1FB31FD20023CB25 /* TouristAttractionTableViewCell.swift */,
-				C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */,
-				C051A1D51FBA271400E7925A /* TouristAttractions.swift */,
+				C084021E1FBADD6000FB662C /* Model */,
+				C084021D1FBADD5000FB662C /* Views */,
+				C084021C1FBADD4100FB662C /* ViewControllers */,
 			);
 			path = touristAttractions;
 			sourceTree = "<group>";
@@ -100,6 +101,50 @@
 				C078CB021FB320FB0023CB25 /* TouristAttraction.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		C08402151FBAC68800FB662C /* TouristAttractionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */,
+				C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */,
+			);
+			path = TouristAttractionCell;
+			sourceTree = "<group>";
+		};
+		C084021C1FBADD4100FB662C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */,
+				C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C084021D1FBADD5000FB662C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C08402151FBAC68800FB662C /* TouristAttractionCell */,
+				C084021A1FBAC82200FB662C /* RatingControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C084021E1FBADD6000FB662C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C051A1D51FBA271400E7925A /* TouristAttractions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C084021F1FBADD8600FB662C /* general */ = {
+			isa = PBXGroup;
+			children = (
+				C0A8FFC91FB0488E0092BEE2 /* views */,
+				C078CB011FB320E90023CB25 /* model */,
+			);
+			path = general;
 			sourceTree = "<group>";
 		};
 		C0A8FFC91FB0488E0092BEE2 /* views */ = {
@@ -140,11 +185,9 @@
 		C0AF257F1FB045590067B1C8 /* explore-ios */ = {
 			isa = PBXGroup;
 			children = (
-				C078CB011FB320E90023CB25 /* model */,
+				C084021F1FBADD8600FB662C /* general */,
 				C01956EF1FB04DD0005E4A98 /* scenes */,
-				C0A8FFC91FB0488E0092BEE2 /* views */,
 				C0AF25801FB045590067B1C8 /* AppDelegate.swift */,
-				C0AF25821FB045590067B1C8 /* ViewController.swift */,
 				C0AF25841FB045590067B1C8 /* Main.storyboard */,
 				C0AF25871FB045590067B1C8 /* Assets.xcassets */,
 				C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */,
@@ -216,6 +259,7 @@
 				C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */,
 				C0AF25881FB045590067B1C8 /* Assets.xcassets in Resources */,
 				C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */,
+				C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C078CB001FB31FD20023CB25 /* TouristAttractionTableViewCell.swift in Sources */,
+				C084021B1FBAC82200FB662C /* RatingControl.swift in Sources */,
+				C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */,
 				C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */,
 				C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */,
 				C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */,
@@ -234,7 +279,6 @@
 				C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */,
 				C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */,
 				C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */,
-				C0AF25831FB045590067B1C8 /* ViewController.swift in Sources */,
 				C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */,
 				C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */,
 				C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */,

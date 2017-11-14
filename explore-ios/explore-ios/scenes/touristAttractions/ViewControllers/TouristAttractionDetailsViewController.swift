@@ -28,6 +28,7 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
         super.viewDidLoad()
         nameTextField.delegate = self
         countryTextField.delegate = self
+        cityTextField.delegate = self
         let image = UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate)
         deleteButton.setImage(image, for: .normal)
         deleteButton.tintColor = UIColor.black
@@ -41,23 +42,19 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
         }
     }
     
+    @IBAction func saveButtonAction(_ sender: Any) {
+        let attrName = nameTextField.text ?? ""
+        let country = countryTextField.text ?? ""
+        let city = cityTextField.text ?? ""
+        let attraction = TouristAttraction(name: attrName, country: country, city: city, imageName: (touristAttraction?.imageName)!)
+        TouristAttractions.shared.attractionsList[attractionIndex!] = attraction
+
+        navigationController?.popViewController(animated: true)
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        // Configure the destination view controller only when the save button is pressed.
-        guard let button = sender as? UIButton, button === editButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
-        }
-        
-        let attrName = nameTextField.text ?? ""
-        let country = countryTextField.text ?? ""
-        let city = cityTextField.text ?? ""
-        touristAttraction = TouristAttraction(name: attrName, country: country, city: city, imageName: (touristAttraction?.imageName)!)
-    }
+
 
 }
