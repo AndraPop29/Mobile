@@ -21,4 +21,11 @@ class TouristAttraction {
         self.city = city
         self.image = image
     }
+    
+    init(name: String, country: String, city: String) {
+        self.name = name
+        self.country = country
+        self.city = city
+        self.image = UIImage()
+    }
 }

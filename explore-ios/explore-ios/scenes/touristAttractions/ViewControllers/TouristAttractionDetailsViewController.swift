@@ -68,11 +68,15 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
         let attrName = nameTextField.text ?? ""
         let country = countryTextField.text ?? ""
         let city = cityTextField.text ?? ""
+        let attraction : TouristAttraction
+        if let image = attractionImage.image {
+            attraction = TouristAttraction(name: attrName, country: country, city: city, image: image)
+        } else {
+            attraction = TouristAttraction(name: attrName, country: country, city: city)
+        }
         if let index = attractionIndex {
-            let attraction = TouristAttraction(name: attrName, country: country, city: city, image: attractionImage.image!)
             TouristAttractions.shared.attractionsList[index] = attraction
         } else {
-            let attraction = TouristAttraction(name: attrName, country: country, city: city, image: attractionImage.image!)
             TouristAttractions.shared.attractionsList.append(attraction)
         }
         navigationController?.popViewController(animated: true)
