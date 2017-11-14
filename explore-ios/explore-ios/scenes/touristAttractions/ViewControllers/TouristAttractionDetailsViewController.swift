@@ -55,7 +55,6 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     }
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Hide the keyboard.
-        print("sjdhaksjdhkhasjdh")
         nameTextField.resignFirstResponder()
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
@@ -71,8 +70,8 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
             } else {
                 attraction = TouristAttraction(name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!)
             }
-            if let index = attractionIndex {
-                TouristAttractions.shared.attractionsList[index] = attraction
+            if attractionIndex != nil {
+                TouristAttractions.shared.updateAttraction(withId: (touristAttraction?.Id)!, attraction: attraction)
             } else {
                 TouristAttractions.shared.attractionsList.append(attraction)
             }

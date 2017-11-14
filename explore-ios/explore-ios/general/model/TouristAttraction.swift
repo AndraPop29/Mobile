@@ -9,13 +9,18 @@
 import Foundation
 import UIKit
 
+var counter = 0
+
 class TouristAttraction {
+    var Id: Int
     var name: String
     var country: String
     var city: String
     var image: UIImage
     
     init(name: String, country: String, city: String, image: UIImage) {
+        counter += 1
+        self.Id = counter
         self.name = name
         self.country = country
         self.city = city
@@ -23,6 +28,8 @@ class TouristAttraction {
     }
     
     init(name: String, country: String, city: String) {
+        counter += 1
+        self.Id = counter
         self.name = name
         self.country = country
         self.city = city

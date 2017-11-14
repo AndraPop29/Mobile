@@ -10,6 +10,7 @@
 		C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F11FB04E00005E4A98 /* LoginViewController.swift */; };
 		C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F41FB0588B005E4A98 /* SignUpViewController.swift */; };
 		C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051A1D51FBA271400E7925A /* TouristAttractions.swift */; };
+		C072C2621FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072C2611FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift */; };
 		C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */; };
 		C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB021FB320FB0023CB25 /* TouristAttraction.swift */; };
 		C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */; };
@@ -24,12 +25,17 @@
 		C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25841FB045590067B1C8 /* Main.storyboard */; };
 		C0AF25881FB045590067B1C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25871FB045590067B1C8 /* Assets.xcassets */; };
 		C0AF258B1FB045590067B1C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */; };
+		EBB01D9407053DC3C3AEC83C /* Pods_explore_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250A733EE36B1CDAF9DF5868 /* Pods_explore_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		250A733EE36B1CDAF9DF5868 /* Pods_explore_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_explore_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E406CC27DDF3F5D6CCA7FE0 /* Pods-explore-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-explore-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios.release.xcconfig"; sourceTree = "<group>"; };
+		7E995AF7A6F580EDEAC59808 /* Pods-explore-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-explore-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		C01956F11FB04E00005E4A98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C01956F41FB0588B005E4A98 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C051A1D51FBA271400E7925A /* TouristAttractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractions.swift; sourceTree = "<group>"; };
+		C072C2611FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionPreferencesViewController.swift; sourceTree = "<group>"; };
 		C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsViewController.swift; sourceTree = "<group>"; };
 		C078CB021FB320FB0023CB25 /* TouristAttraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttraction.swift; sourceTree = "<group>"; };
 		C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionDetailsViewController.swift; sourceTree = "<group>"; };
@@ -53,15 +59,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBB01D9407053DC3C3AEC83C /* Pods_explore_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06029D75301808649D3F39A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				250A733EE36B1CDAF9DF5868 /* Pods_explore_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B2EFECD2BD4DB098AC30E32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E995AF7A6F580EDEAC59808 /* Pods-explore-ios.debug.xcconfig */,
+				4E406CC27DDF3F5D6CCA7FE0 /* Pods-explore-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C01956EF1FB04DD0005E4A98 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C072C25F1FBB778A00C4FED9 /* statistics */,
 				C078CAFC1FB31D6A0023CB25 /* touristAttractions */,
 				C01956F31FB05850005E4A98 /* userRegistration */,
 				C01956F01FB04DF2005E4A98 /* login */,
@@ -83,6 +108,22 @@
 				C01956F41FB0588B005E4A98 /* SignUpViewController.swift */,
 			);
 			path = userRegistration;
+			sourceTree = "<group>";
+		};
+		C072C25F1FBB778A00C4FED9 /* statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C072C2601FBB779C00C4FED9 /* ViewControllers */,
+			);
+			path = statistics;
+			sourceTree = "<group>";
+		};
+		C072C2601FBB779C00C4FED9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C072C2611FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		C078CAFC1FB31D6A0023CB25 /* touristAttractions */ = {
@@ -171,6 +212,8 @@
 			children = (
 				C0AF257F1FB045590067B1C8 /* explore-ios */,
 				C0AF257E1FB045590067B1C8 /* Products */,
+				7B2EFECD2BD4DB098AC30E32 /* Pods */,
+				06029D75301808649D3F39A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,9 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0AF258F1FB045590067B1C8 /* Build configuration list for PBXNativeTarget "explore-ios" */;
 			buildPhases = (
+				7242A107EC21958028A5AC18 /* [CP] Check Pods Manifest.lock */,
 				C0AF25791FB045590067B1C8 /* Sources */,
 				C0AF257A1FB045590067B1C8 /* Frameworks */,
 				C0AF257B1FB045590067B1C8 /* Resources */,
+				83B64C3C7F9AAAAFB6A2EB4F /* [CP] Embed Pods Frameworks */,
+				F33846073702431E6A391F49 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,6 +311,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7242A107EC21958028A5AC18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-explore-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83B64C3C7F9AAAAFB6A2EB4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F33846073702431E6A391F49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C0AF25791FB045590067B1C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -278,6 +380,7 @@
 				C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */,
 				C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */,
 				C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */,
+				C072C2621FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift in Sources */,
 				C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */,
 				C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */,
 				C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */,
@@ -416,6 +519,7 @@
 		};
 		C0AF25901FB045590067B1C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E995AF7A6F580EDEAC59808 /* Pods-explore-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -431,6 +535,7 @@
 		};
 		C0AF25911FB045590067B1C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E406CC27DDF3F5D6CCA7FE0 /* Pods-explore-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

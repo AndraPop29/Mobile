@@ -18,4 +18,11 @@ class TouristAttractions {
     func getAttractions(fromCountry country: String) -> [TouristAttraction] {
         return attractionsList.filter ({ return $0.country == country})
     }
+    func updateAttraction(withId id: Int, attraction: TouristAttraction) {
+        for i in 0...attractionsList.count - 1 {
+            if attractionsList[i].Id == id {
+                attractionsList[i] = attraction
+            }
+        }
+    }
 }
