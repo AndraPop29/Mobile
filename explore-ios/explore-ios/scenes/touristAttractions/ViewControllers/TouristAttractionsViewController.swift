@@ -40,7 +40,7 @@ class TouristAttractionsViewController: UITableViewController {
     }
     
     func loadMockData() {
-        TouristAttractions.shared.attractionsList += [TouristAttraction(name: "Collosseum", country: "Italy", city: "Rome" ,imageName: "the-colloseum-andrey-starostin"), TouristAttraction(name: "Eiffel Tower", country: "France", city: "Paris", imageName: "eiffel")]
+        TouristAttractions.shared.attractionsList += [TouristAttraction(name: "Collosseum", country: "Italy", city: "Rome" ,image: UIImage(named: "the-colloseum-andrey-starostin")!), TouristAttraction(name: "Eiffel Tower", country: "France", city: "Paris", image: UIImage(named: "eiffel")!)]
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -66,7 +66,7 @@ class TouristAttractionsViewController: UITableViewController {
         cell.selectionStyle = .none
         let attraction =  TouristAttractions.shared.attractionsList[indexPath.section]
         cell.nameLabel.text = attraction.name
-        cell.attractionImageView.image = UIImage(named: attraction.imageName)
+        cell.attractionImageView.image = attraction.image
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -7,17 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 class TouristAttraction {
     var name: String
     var country: String
     var city: String
-    var imageName: String
+    var image: UIImage
     
-    init(name: String, country: String, city: String, imageName: String) {
+    init(name: String, country: String, city: String, image: UIImage) {
         self.name = name
         self.country = country
         self.city = city
-        self.imageName = imageName
+        self.image = image
     }
 }
