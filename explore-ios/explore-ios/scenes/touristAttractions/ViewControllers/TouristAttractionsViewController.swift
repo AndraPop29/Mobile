@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TouristAttractionsViewController: UITableViewController {
+class TouristAttractionsViewController: UITableViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    var pickerView: UIPickerView?
     @IBAction func addButtonAction(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = mainStoryboard.instantiateViewController(withIdentifier: "attractionDetailsViewController") as? TouristAttractionDetailsViewController {
@@ -29,6 +31,11 @@ class TouristAttractionsViewController: UITableViewController {
         addButton.tintColor = UIColor.black
         addButton.imageView?.tintColor = .black
         loadMockData()
+        pickerView = UIPickerView()
+        countryTextField.inputView = pickerView
+        countryTextField.text = TouristAttractions.shared.getCountries()[0]
+        self.pickerView?.delegate = self
+        self.pickerView?.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -47,7 +54,7 @@ class TouristAttractionsViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-            return TouristAttractions.shared.attractionsList.count
+        return  TouristAttractions.shared.getAttractions(fromCountry: countryTextField.text!).count
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
@@ -64,7 +71,7 @@ class TouristAttractionsViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of TouristAttractionCell.")
         }
         cell.selectionStyle = .none
-        let attraction =  TouristAttractions.shared.attractionsList[indexPath.section]
+        let attraction = TouristAttractions.shared.getAttractions(fromCountry: countryTextField.text!)[indexPath.section]
         cell.nameLabel.text = attraction.name
         cell.attractionImageView.image = attraction.image
         return cell
@@ -72,10 +79,34 @@ class TouristAttractionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = mainStoryboard.instantiateViewController(withIdentifier: "attractionDetailsViewController") as? TouristAttractionDetailsViewController {
-            controller.touristAttraction = TouristAttractions.shared.attractionsList[indexPath.section]
+            controller.touristAttraction = TouristAttractions.shared.getAttractions(fromCountry: countryTextField.text!)[indexPath.section]
             controller.attractionIndex = indexPath.section
             navigationController?.pushViewController(controller, animated: true)
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
+}
+
+extension TouristAttractionsViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return TouristAttractions.shared.getCountries().count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return TouristAttractions.shared.getCountries()[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        countryTextField.text = TouristAttractions.shared.getCountries()[row]
+        countryTextField.resignFirstResponder()
+        tableView.reloadData()
+    }
 }

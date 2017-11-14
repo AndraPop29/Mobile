@@ -11,7 +11,6 @@ import os.log
 
 class TouristAttractionDetailsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet weak var deleteButton: UIButton!
-    
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var attractionImage: UIImageView!
@@ -65,21 +64,24 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     }
     
     @IBAction func saveButtonAction(_ sender: Any) {
-        let attrName = nameTextField.text ?? ""
-        let country = countryTextField.text ?? ""
-        let city = cityTextField.text ?? ""
         let attraction : TouristAttraction
-        if let image = attractionImage.image {
-            attraction = TouristAttraction(name: attrName, country: country, city: city, image: image)
+        if nameTextField.text != "" && countryTextField.text != "" && cityTextField.text != "" {
+            if let image = attractionImage.image {
+                attraction = TouristAttraction(name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!, image: image)
+            } else {
+                attraction = TouristAttraction(name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!)
+            }
+            if let index = attractionIndex {
+                TouristAttractions.shared.attractionsList[index] = attraction
+            } else {
+                TouristAttractions.shared.attractionsList.append(attraction)
+            }
+            navigationController?.popViewController(animated: true)
         } else {
-            attraction = TouristAttraction(name: attrName, country: country, city: city)
+            let alert = UIAlertController(title: "Invalid location", message: "None of the fields can be empty", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        if let index = attractionIndex {
-            TouristAttractions.shared.attractionsList[index] = attraction
-        } else {
-            TouristAttractions.shared.attractionsList.append(attraction)
-        }
-        navigationController?.popViewController(animated: true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -131,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Ltj-iK-hpC">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tourist Attractions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-9h-0dv">
@@ -153,17 +153,26 @@
                                         <action selector="addButtonAction:" destination="chc-lA-z7g" eventType="touchUpInside" id="WNv-L7-hak"/>
                                     </connections>
                                 </button>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uyK-Fa-Rn1">
+                                    <rect key="frame" x="16" y="41" width="320" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" red="0.77303957030000003" green="0.62970284180000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="tintColor" red="0.77303957030000003" green="0.62970284180000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="uyK-Fa-Rn1" secondAttribute="trailing" constant="39" id="37K-9E-Gz3"/>
                                 <constraint firstItem="tqO-9K-oBT" firstAttribute="top" secondItem="Ltj-iK-hpC" secondAttribute="top" constant="13" id="8eY-zL-cnZ"/>
+                                <constraint firstAttribute="bottom" secondItem="uyK-Fa-Rn1" secondAttribute="bottom" constant="5" id="aKs-WW-6RL"/>
+                                <constraint firstItem="uyK-Fa-Rn1" firstAttribute="leading" secondItem="Ltj-iK-hpC" secondAttribute="leading" constant="16" id="eKc-a3-CfF"/>
                                 <constraint firstAttribute="trailing" secondItem="tqO-9K-oBT" secondAttribute="trailing" constant="11" id="wqY-bu-tOp"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TouristAttractionTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TouristAttractionTableViewCell" rowHeight="90" id="FT4-ZA-J5J" customClass="TouristAttractionCell" customModule="explore_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FT4-ZA-J5J" id="gpn-1l-833">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
@@ -182,6 +191,7 @@
                     <navigationItem key="navigationItem" id="Lyw-B7-Wba"/>
                     <connections>
                         <outlet property="addButton" destination="tqO-9K-oBT" id="iXC-TX-nhd"/>
+                        <outlet property="countryTextField" destination="uyK-Fa-Rn1" id="5Tz-NY-6PS"/>
                         <outlet property="headerView" destination="Ltj-iK-hpC" id="ptj-jz-VW8"/>
                     </connections>
                 </tableViewController>
