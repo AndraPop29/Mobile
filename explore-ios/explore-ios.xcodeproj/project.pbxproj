@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F11FB04E00005E4A98 /* LoginViewController.swift */; };
 		C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F41FB0588B005E4A98 /* SignUpViewController.swift */; };
+		C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051A1D51FBA271400E7925A /* TouristAttractions.swift */; };
 		C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */; };
 		C078CB001FB31FD20023CB25 /* TouristAttractionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFF1FB31FD20023CB25 /* TouristAttractionTableViewCell.swift */; };
 		C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB021FB320FB0023CB25 /* TouristAttraction.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		C01956F11FB04E00005E4A98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C01956F41FB0588B005E4A98 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C051A1D51FBA271400E7925A /* TouristAttractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractions.swift; sourceTree = "<group>"; };
 		C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsViewController.swift; sourceTree = "<group>"; };
 		C078CAFF1FB31FD20023CB25 /* TouristAttractionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionTableViewCell.swift; sourceTree = "<group>"; };
 		C078CB021FB320FB0023CB25 /* TouristAttraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttraction.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */,
 				C078CAFF1FB31FD20023CB25 /* TouristAttractionTableViewCell.swift */,
 				C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */,
+				C051A1D51FBA271400E7925A /* TouristAttractions.swift */,
 			);
 			path = touristAttractions;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */,
 				C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */,
 				C0AF25831FB045590067B1C8 /* ViewController.swift in Sources */,
+				C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */,
 				C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */,
 				C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */,
 			);
