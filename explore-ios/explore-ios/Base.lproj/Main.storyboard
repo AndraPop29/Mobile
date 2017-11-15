@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -131,16 +131,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Ltj-iK-hpC">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tourist Attractions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-9h-0dv">
-                                    <rect key="frame" x="16" y="12" width="174" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqO-9K-oBT">
                                     <rect key="frame" x="344" y="13" width="20" height="30"/>
                                     <constraints>
@@ -154,7 +147,7 @@
                                     </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uyK-Fa-Rn1">
-                                    <rect key="frame" x="16" y="41" width="320" height="30"/>
+                                    <rect key="frame" x="16" y="14" width="320" height="30"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -172,15 +165,12 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TouristAttractionTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TouristAttractionTableViewCell" rowHeight="90" id="FT4-ZA-J5J" customClass="TouristAttractionCell" customModule="explore_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="77" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FT4-ZA-J5J" id="gpn-1l-833">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="sOT-vE-fE9" kind="show" id="WJd-7t-iuX"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -198,6 +188,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nU9-Wf-IBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="592.79999999999995" y="425.93703148425789"/>
+        </scene>
+        <!--How visitors rated this location-->
+        <scene sceneID="kOr-Jc-ycd">
+            <objects>
+                <viewController storyboardIdentifier="touristAttractionStatisticsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xmn-rV-76E" customClass="TouristAttractionStatisticsViewController" customModule="explore_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cRX-K5-oaP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozT-0w-V2Q">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Vt-Ig-1ir" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="8" width="375" height="364"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="CgC-Oc-RB6"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="How visitors rated this location" id="Vsg-pk-gER"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="1Vt-Ig-1ir" id="uCy-cs-Me6"/>
+                        <outlet property="pieView" destination="ozT-0w-V2Q" id="l6n-VT-7MB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kKe-pg-e7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2500" y="436.73163418290858"/>
         </scene>
         <!--Details-->
         <scene sceneID="RQA-pC-gPe">
@@ -247,23 +271,6 @@
                                     <outletCollection property="gestureRecognizers" destination="Q3y-4t-AS9" appends="YES" id="VJv-xH-f0y"/>
                                 </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tourist Attraction Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tw-xb-fEq">
-                                <rect key="frame" x="93" y="32" width="194" height="19.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qb3-yX-g4i">
-                                <rect key="frame" x="345" y="30" width="14" height="22"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="trash">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteButtonAction:" destination="sOT-vE-fE9" eventType="touchUpInside" id="VoK-7D-yNA"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2F-eZ-FQz">
                                 <rect key="frame" x="93" y="186" width="266" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -290,13 +297,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="add"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzp-KG-Rr7">
+                                <rect key="frame" x="19" y="200" width="78" height="30"/>
+                                <state key="normal" title="See ratings"/>
+                                <connections>
+                                    <action selector="seeRatingsButton:" destination="sOT-vE-fE9" eventType="touchUpInside" id="FDa-CQ-Z1G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Qb3-yX-g4i" firstAttribute="top" secondItem="l33-5p-61R" secondAttribute="top" constant="10" id="GVj-ON-zta"/>
-                            <constraint firstItem="l33-5p-61R" firstAttribute="trailing" secondItem="Qb3-yX-g4i" secondAttribute="trailing" constant="16" id="LvN-hu-Z7g"/>
-                            <constraint firstItem="8Tw-xb-fEq" firstAttribute="leading" secondItem="l33-5p-61R" secondAttribute="leading" constant="93" id="dou-7c-zL1"/>
-                            <constraint firstItem="8Tw-xb-fEq" firstAttribute="top" secondItem="l33-5p-61R" secondAttribute="top" constant="12" id="hPY-L6-9rC"/>
+                            <constraint firstItem="xzp-KG-Rr7" firstAttribute="leading" secondItem="l33-5p-61R" secondAttribute="leading" constant="19" id="cJQ-R0-YLo"/>
+                            <constraint firstItem="xzp-KG-Rr7" firstAttribute="top" secondItem="l33-5p-61R" secondAttribute="top" constant="180" id="hGy-VM-tVT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l33-5p-61R"/>
                     </view>
@@ -307,7 +319,6 @@
                         <outlet property="attractionImage" destination="mnB-MK-h8K" id="W4W-Ia-SbU"/>
                         <outlet property="cityTextField" destination="Y2F-eZ-FQz" id="AnZ-fl-fTH"/>
                         <outlet property="countryTextField" destination="JUb-XO-w9g" id="Fiu-pC-ug2"/>
-                        <outlet property="deleteButton" destination="Qb3-yX-g4i" id="s9N-0V-28c"/>
                         <outlet property="editButton" destination="UMD-BJ-dVD" id="VK1-n5-IVw"/>
                         <outlet property="nameTextField" destination="z4e-Iw-nzb" id="Y6K-hu-tcq"/>
                     </connections>
@@ -487,7 +498,6 @@
     </scenes>
     <resources>
         <image name="add" width="16" height="16"/>
-        <image name="trash" width="14" height="16"/>
         <image name="travelIcon" width="128" height="128"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

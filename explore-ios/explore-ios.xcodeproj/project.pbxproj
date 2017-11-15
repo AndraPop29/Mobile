@@ -17,6 +17,7 @@
 		C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */; };
 		C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */; };
 		C084021B1FBAC82200FB662C /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C084021A1FBAC82200FB662C /* RatingControl.swift */; };
+		C09FCEA41FBC1810006759EA /* TouristAttractionStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FCEA31FBC1810006759EA /* TouristAttractionStatisticsViewController.swift */; };
 		C0A8FFCF1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */; };
 		C0A8FFD31FB04B440092BEE2 /* RegistrationTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */; };
 		C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */; };
@@ -42,6 +43,7 @@
 		C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionCell.swift; sourceTree = "<group>"; };
 		C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouristAttractionCell.xib; sourceTree = "<group>"; };
 		C084021A1FBAC82200FB662C /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		C09FCEA31FBC1810006759EA /* TouristAttractionStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionStatisticsViewController.swift; sourceTree = "<group>"; };
 		C0A8FFCE1FB049C00092BEE2 /* TextFieldNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldNavigationDelegate.swift; sourceTree = "<group>"; };
 		C0A8FFD11FB04B440092BEE2 /* RegistrationTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTextFieldView.swift; sourceTree = "<group>"; };
 		C0A8FFD21FB04B440092BEE2 /* RegistrationTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationTextFieldView.xib; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */,
 				C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */,
+				C09FCEA31FBC1810006759EA /* TouristAttractionStatisticsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				C084021B1FBAC82200FB662C /* RatingControl.swift in Sources */,
 				C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */,
 				C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */,
+				C09FCEA41FBC1810006759EA /* TouristAttractionStatisticsViewController.swift in Sources */,
 				C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */,
 				C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */,
 				C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */,

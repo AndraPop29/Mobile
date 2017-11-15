@@ -14,10 +14,7 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     @IBOutlet weak var addButton: UIButton!
     var pickerView: UIPickerView?
     @IBAction func addButtonAction(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "attractionDetailsViewController") as? TouristAttractionDetailsViewController {
-            navigationController?.pushViewController(controller, animated: true)
-        }
+       
     }
     @IBOutlet weak var headerView: UIView!
     override func viewDidLoad() {
@@ -25,20 +22,26 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         let nibName = UINib(nibName: "TouristAttractionCell", bundle:nil)
         tableView.register(nibName, forCellReuseIdentifier: "touristAttractionCell")
         tableView.separatorStyle = .none
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         headerView.backgroundColor = .white
-        let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
-        addButton.setImage(image, for: .normal)
-        addButton.tintColor = UIColor.black
-        addButton.imageView?.tintColor = .black
+        let addBtn = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addTouristAttraction)) // action:#selector(Class.MethodName) for swift 3
+        self.navigationItem.rightBarButtonItem  = addBtn
+        self.title = "Tourist Attractions"
         loadMockData()
         pickerView = UIPickerView()
         countryTextField.inputView = pickerView
-        countryTextField.text = TouristAttractions.shared.getCountries()[0]
         self.pickerView?.delegate = self
         self.pickerView?.dataSource = self
     }
+    @objc func addTouristAttraction() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "attractionDetailsViewController") as? TouristAttractionDetailsViewController {
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        countryTextField.text = TouristAttractions.shared.getCountries()[0]
         tableView.reloadData()
     }
 
@@ -47,7 +50,8 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     }
     
     func loadMockData() {
-        TouristAttractions.shared.attractionsList += [TouristAttraction(name: "Collosseum", country: "Italy", city: "Rome" ,image: UIImage(named: "the-colloseum-andrey-starostin")!), TouristAttraction(name: "Eiffel Tower", country: "France", city: "Paris", image: UIImage(named: "eiffel")!)]
+        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Collosseum", country: "Italy", city: "Rome" ,image: UIImage(named: "the-colloseum-andrey-starostin")!))
+        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Eiffel Tower", country: "France", city: "Paris", image: UIImage(named: "eiffel")!))
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

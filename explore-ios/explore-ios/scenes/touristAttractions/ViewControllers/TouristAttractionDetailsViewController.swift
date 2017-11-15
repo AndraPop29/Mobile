@@ -10,7 +10,6 @@ import UIKit
 import os.log
 
 class TouristAttractionDetailsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var attractionImage: UIImageView!
@@ -19,19 +18,25 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     var touristAttraction: TouristAttraction?
     var attractionIndex: Int?
     
-    @IBAction func deleteButtonAction(_ sender: Any) {
-        TouristAttractions.shared.attractionsList.remove(at: attractionIndex!)
+    @objc func deleteTouristAttraction() {
+        TouristAttractions.shared.attractionsList.remove(at: (touristAttraction?.Id)!)
         navigationController?.popViewController(animated: true)
+    }
+    @objc func cancelAddButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func seeRatingsButton(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "touristAttractionStatisticsViewController") as? TouristAttractionStatisticsViewController {
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         nameTextField.delegate = self
         countryTextField.delegate = self
         cityTextField.delegate = self
-        let image = UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate)
-        deleteButton.setImage(image, for: .normal)
-        deleteButton.tintColor = UIColor.black
-        deleteButton.imageView?.tintColor = .black
         editButton.setTitle("SAVE", for: .normal)
         attractionImage.isUserInteractionEnabled = true
         if let attraction = touristAttraction {
@@ -39,6 +44,14 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
             countryTextField.text = touristAttraction?.country
             cityTextField.text = touristAttraction?.city
             attractionImage.image = attraction.image
+        }
+        if nameTextField.text == "" {
+            let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddButton))
+            self.navigationItem.rightBarButtonItem  = cancelBtn
+        } else {
+            let deleteBtn = UIBarButtonItem(image: UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(deleteTouristAttraction))
+            deleteBtn.tintColor = .black
+            self.navigationItem.rightBarButtonItem  = deleteBtn
         }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -73,7 +86,7 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
             if attractionIndex != nil {
                 TouristAttractions.shared.updateAttraction(withId: (touristAttraction?.Id)!, attraction: attraction)
             } else {
-                TouristAttractions.shared.attractionsList.append(attraction)
+                TouristAttractions.shared.addAttraction(attraction: attraction)
             }
             navigationController?.popViewController(animated: true)
         } else {

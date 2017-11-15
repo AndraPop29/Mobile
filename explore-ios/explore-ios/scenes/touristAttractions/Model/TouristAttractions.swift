@@ -25,4 +25,9 @@ class TouristAttractions {
             }
         }
     }
+    func addAttraction(attraction: TouristAttraction) {
+        if(!attractionsList.contains(where: {$0.name == attraction.name})) {
+            attractionsList.append(attraction)
+        }
+    }
 }

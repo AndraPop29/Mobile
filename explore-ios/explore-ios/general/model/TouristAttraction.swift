@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-var counter = 0
+var counter = -1
 
 class TouristAttraction {
     var Id: Int
