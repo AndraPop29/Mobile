@@ -22,9 +22,6 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
         TouristAttractions.shared.attractionsList.remove(at: (touristAttraction?.Id)!)
         navigationController?.popViewController(animated: true)
     }
-    @objc func cancelAddButton() {
-        navigationController?.popViewController(animated: true)
-    }
     @IBAction func seeRatingsButton(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = mainStoryboard.instantiateViewController(withIdentifier: "touristAttractionStatisticsViewController") as? TouristAttractionStatisticsViewController {
@@ -45,13 +42,12 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
             cityTextField.text = touristAttraction?.city
             attractionImage.image = attraction.image
         }
-        if nameTextField.text == "" {
-            let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddButton))
-            self.navigationItem.rightBarButtonItem  = cancelBtn
-        } else {
+        if nameTextField.text != "" {
             let deleteBtn = UIBarButtonItem(image: UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(deleteTouristAttraction))
             deleteBtn.tintColor = .black
             self.navigationItem.rightBarButtonItem  = deleteBtn
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
         }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
