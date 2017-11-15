@@ -168,8 +168,8 @@
 		C084021D1FBADD5000FB662C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0EA72971FBCCA380051914D /* RatingControl */,
 				C08402151FBAC68800FB662C /* TouristAttractionCell */,
-				C084021A1FBAC82200FB662C /* RatingControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +240,14 @@
 				C0AF258C1FB045590067B1C8 /* Info.plist */,
 			);
 			path = "explore-ios";
+			sourceTree = "<group>";
+		};
+		C0EA72971FBCCA380051914D /* RatingControl */ = {
+			isa = PBXGroup;
+			children = (
+				C084021A1FBAC82200FB662C /* RatingControl.swift */,
+			);
+			path = RatingControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

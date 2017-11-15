@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class TouristAttractionsViewController: UITableViewController, UITextFieldDelegate {
     
@@ -19,15 +20,21 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     @IBOutlet weak var headerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = nil
         let nibName = UINib(nibName: "TouristAttractionCell", bundle:nil)
         tableView.register(nibName, forCellReuseIdentifier: "touristAttractionCell")
         tableView.separatorStyle = .none
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         headerView.backgroundColor = .white
-        let addBtn = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addTouristAttraction)) // action:#selector(Class.MethodName) for swift 3
+        let addBtn = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addTouristAttraction))
         self.navigationItem.rightBarButtonItem  = addBtn
         self.title = "Tourist Attractions"
-        loadMockData()
+        if let savedAttractions = TouristAttractions.shared.loadAttractions() {
+            TouristAttractions.shared.attractionsList += savedAttractions
+        }
+        else {
+            loadMockData()
+        }
         pickerView = UIPickerView()
         countryTextField.inputView = pickerView
         self.pickerView?.delegate = self
@@ -76,6 +83,7 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         }
         cell.selectionStyle = .none
         let attraction = TouristAttractions.shared.getAttractions(fromCountry: countryTextField.text!)[indexPath.section]
+        cell.touristAttraction = attraction
         cell.nameLabel.text = attraction.name
         cell.attractionImageView.image = attraction.image
         return cell
@@ -92,7 +100,7 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         textField.resignFirstResponder()
         return true
     }
-
+    
 }
 
 extension TouristAttractionsViewController : UIPickerViewDelegate, UIPickerViewDataSource {
@@ -114,3 +122,5 @@ extension TouristAttractionsViewController : UIPickerViewDelegate, UIPickerViewD
         tableView.reloadData()
     }
 }
+
+

@@ -13,6 +13,9 @@ class RatingControl: UIStackView {
     private var ratingButtons = [UIButton]()
     var rating = 0 {
         didSet {
+            if let view = self.superview?.superview?.superview as? TouristAttractionCell {
+                view.touristAttraction?.rateTouristAttraction(number: Double(rating))
+            }
             updateButtonSelectionStates()
         }
     }
@@ -75,7 +78,6 @@ class RatingControl: UIStackView {
         guard let index = ratingButtons.index(of: button) else {
             fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
         }
-        
         // Calculate the rating of the selected button
         let selectedRating = index + 1
         

@@ -11,8 +11,10 @@ import UIKit
 class TouristAttractionCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     @IBOutlet weak var attractionImageView: UIImageView!
+    var touristAttraction : TouristAttraction?
     override func awakeFromNib() {
         super.awakeFromNib()
         addShadow()
@@ -20,8 +22,6 @@ class TouristAttractionCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     private func addShadow(){
         self.view.bounds = self.bounds

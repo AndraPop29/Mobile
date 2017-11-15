@@ -20,6 +20,7 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     
     @objc func deleteTouristAttraction() {
         TouristAttractions.shared.attractionsList.remove(at: (touristAttraction?.Id)!)
+        TouristAttractions.shared.saveAttractions()
         navigationController?.popViewController(animated: true)
     }
     @IBAction func seeRatingsButton(_ sender: Any) {
@@ -84,6 +85,7 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
             } else {
                 TouristAttractions.shared.addAttraction(attraction: attraction)
             }
+            TouristAttractions.shared.saveAttractions()
             navigationController?.popViewController(animated: true)
         } else {
             let alert = UIAlertController(title: "Invalid location", message: "None of the fields can be empty", preferredStyle: UIAlertControllerStyle.alert)

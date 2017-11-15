@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,6 +36,9 @@
                                     <userDefinedRuntimeAttribute type="size" keyPath="starSize">
                                         <size key="value" width="35" height="35"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                         </subviews>
@@ -63,6 +66,7 @@
             <connections>
                 <outlet property="attractionImageView" destination="kjO-iY-JAj" id="Nju-e1-V5t"/>
                 <outlet property="nameLabel" destination="MYL-Mj-3vT" id="fIF-AT-jeD"/>
+                <outlet property="ratingControl" destination="hA0-Tv-Yge" id="g1k-Rx-KMM"/>
                 <outlet property="view" destination="VcG-Xi-rbm" id="akv-7K-yum"/>
             </connections>
             <point key="canvasLocation" x="54.5" y="77.5"/>

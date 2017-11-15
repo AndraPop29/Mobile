@@ -25,19 +25,24 @@ class TouristAttractionStatisticsViewController: UIViewController {
         
         let chart = PieChartView(frame: self.pieView.frame)
         // 2. generate chart data entries
-        let track = ["5", "4", "3", "2", "1"]
-        let money = [100.0, 20, 50, 34,9]
+        let attractions = TouristAttractions.shared.getTop10Attractions()
+        var track : [String] = []
+        var money : [Double] = []
+        for attraction in attractions {
+            track.append(attraction.name)
+            money.append(attraction.ratingAverage)
+        }
         
         var entries = [PieChartDataEntry]()
         for (index, value) in money.enumerated() {
             let entry = PieChartDataEntry()
             entry.y = value
             entry.label = track[index]
-            entries.append( entry)
+            entries.append(entry)
         }
         
         // 3. chart setup
-        let set = PieChartDataSet( values: entries, label: "stars given")
+        let set = PieChartDataSet(values: entries, label: "stars given")
         // this is custom extension method. Download the code for more details.
         var colors: [UIColor] = []
         
