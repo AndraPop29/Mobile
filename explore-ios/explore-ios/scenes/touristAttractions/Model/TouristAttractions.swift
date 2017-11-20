@@ -53,4 +53,9 @@ class TouristAttractions {
         }
         
     }
+    func rateAttraction(named name: String, with rating: Double) {
+        if let i = attractionsList.index(where: { $0.name ==  name}) {
+            attractionsList[i].rateTouristAttraction(number: rating)
+        }
+    }
 }

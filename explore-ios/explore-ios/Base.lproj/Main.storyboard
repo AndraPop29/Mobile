@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -297,19 +297,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="add"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzp-KG-Rr7">
-                                <rect key="frame" x="19" y="200" width="78" height="30"/>
-                                <state key="normal" title="See ratings"/>
-                                <connections>
-                                    <action selector="seeRatingsButton:" destination="sOT-vE-fE9" eventType="touchUpInside" id="FDa-CQ-Z1G"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="xzp-KG-Rr7" firstAttribute="leading" secondItem="l33-5p-61R" secondAttribute="leading" constant="19" id="cJQ-R0-YLo"/>
-                            <constraint firstItem="xzp-KG-Rr7" firstAttribute="top" secondItem="l33-5p-61R" secondAttribute="top" constant="180" id="hGy-VM-tVT"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="l33-5p-61R"/>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="chl-OX-L5p">

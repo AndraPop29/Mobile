@@ -23,12 +23,7 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
         TouristAttractions.shared.saveAttractions()
         navigationController?.popViewController(animated: true)
     }
-    @IBAction func seeRatingsButton(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "touristAttractionStatisticsViewController") as? TouristAttractionStatisticsViewController {
-            navigationController?.pushViewController(controller, animated: true)
-        }
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: true)

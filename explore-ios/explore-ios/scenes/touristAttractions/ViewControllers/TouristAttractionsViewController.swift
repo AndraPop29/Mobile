@@ -28,6 +28,11 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         headerView.backgroundColor = .white
         let addBtn = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addTouristAttraction))
         self.navigationItem.rightBarButtonItem  = addBtn
+        let button = UIButton(type: .system)
+        button.setTitle("Statistics", for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(self.seeStatistics), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
         self.title = "Tourist Attractions"
         if let savedAttractions = TouristAttractions.shared.loadAttractions() {
             TouristAttractions.shared.attractionsList += savedAttractions
@@ -43,6 +48,12 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     @objc func addTouristAttraction() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = mainStoryboard.instantiateViewController(withIdentifier: "attractionDetailsViewController") as? TouristAttractionDetailsViewController {
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    @objc func seeStatistics() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "touristAttractionStatisticsViewController") as? TouristAttractionStatisticsViewController {
             navigationController?.pushViewController(controller, animated: true)
         }
     }
