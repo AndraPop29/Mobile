@@ -12,9 +12,6 @@ class TouristAttractionStatisticsViewController: UIViewController {
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var pieView: UIView!
     
-    @IBAction func backButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setChart()
@@ -25,7 +22,7 @@ class TouristAttractionStatisticsViewController: UIViewController {
         
         let chart = PieChartView(frame: self.pieView.frame)
         // 2. generate chart data entries
-        let attractions = TouristAttractions.shared.getTop10Attractions()
+        let attractions = TouristAttractions.shared.getTop5Attractions()
         var track : [String] = []
         var money : [Double] = []
         for attraction in attractions {

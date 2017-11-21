@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bSq-kD-1eB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -187,9 +187,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nU9-Wf-IBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="592.79999999999995" y="425.93703148425789"/>
+            <point key="canvasLocation" x="600" y="502"/>
         </scene>
-        <!--How visitors rated this location-->
+        <!--How visitors rated the locations-->
         <scene sceneID="kOr-Jc-ycd">
             <objects>
                 <viewController storyboardIdentifier="touristAttractionStatisticsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xmn-rV-76E" customClass="TouristAttractionStatisticsViewController" customModule="explore_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -213,7 +213,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CgC-Oc-RB6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="How visitors rated this location" id="Vsg-pk-gER"/>
+                    <navigationItem key="navigationItem" title="How visitors rated the locations" id="Vsg-pk-gER"/>
                     <connections>
                         <outlet property="pieChartView" destination="1Vt-Ig-1ir" id="uCy-cs-Me6"/>
                         <outlet property="pieView" destination="ozT-0w-V2Q" id="l6n-VT-7MB"/>
@@ -292,11 +292,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NY-vT-s1b">
-                                <rect key="frame" x="179" y="444" width="16" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="add"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="l33-5p-61R"/>
@@ -486,7 +481,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="16" height="16"/>
         <image name="travelIcon" width="128" height="128"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

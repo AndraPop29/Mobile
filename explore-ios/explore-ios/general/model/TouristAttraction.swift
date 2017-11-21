@@ -33,7 +33,8 @@ class TouristAttraction: NSObject, NSCoding {
     var ratingAverage:Double = 0
     
     init(id:Int?, name: String, country: String, city: String, image: UIImage?, average: Double?) {
-        self.Id = id
+        counter = counter + 1
+        self.Id = id != nil ? id! : counter
         self.name = name
         self.country = country
         self.city = city
@@ -59,10 +60,10 @@ class TouristAttraction: NSObject, NSCoding {
     }
     
     func rateTouristAttraction(number: Double) {
-        if ratingAverage != 0 {
-            ratingAverage = (ratingAverage + number)/2
+        if self.ratingAverage != 0 {
+            self.ratingAverage = (self.ratingAverage + number)/2
         } else {
-            ratingAverage = number
+            self.ratingAverage = number
         }
     }
     
@@ -85,8 +86,8 @@ class TouristAttraction: NSObject, NSCoding {
         let decodedId = aDecoder.decodeObject(forKey: PropertyKey.id) as? Int
         let decodedCountry = aDecoder.decodeObject(forKey: PropertyKey.country) as! String
         let decodedCity = aDecoder.decodeObject(forKey: PropertyKey.city) as! String
-        let decodedAverage = aDecoder.decodeObject(forKey: PropertyKey.ratingAverage) as? Double
         let decodedImage = aDecoder.decodeObject(forKey: PropertyKey.image) as? UIImage
+        let decodedAverage = aDecoder.decodeDouble(forKey:  PropertyKey.ratingAverage)
         self.init(id: decodedId, name: decodedName, country: decodedCountry, city: decodedCity, image: decodedImage, average: decodedAverage)
 
     }

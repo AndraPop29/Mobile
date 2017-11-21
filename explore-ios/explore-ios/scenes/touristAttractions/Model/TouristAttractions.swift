@@ -14,7 +14,7 @@ class TouristAttractions {
     static let shared = TouristAttractions()
     private init(){}
     func getCountries() -> [String] {
-        return attractionsList.map {$0.country};
+        return Array(Set(attractionsList.map {$0.country}));
     }
     func getAttractions(fromCountry country: String) -> [TouristAttraction] {
         return attractionsList.filter ({ return $0.country == country})
@@ -32,6 +32,7 @@ class TouristAttractions {
         }
     }
     func saveAttractions() {
+
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(attractionsList, toFile:TouristAttraction.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("Attractions successfully saved.", log: OSLog.default, type: .debug)
@@ -42,14 +43,14 @@ class TouristAttractions {
     func loadAttractions() -> [TouristAttraction]?  {
         return NSKeyedUnarchiver.unarchiveObject(withFile: TouristAttraction.ArchiveURL.path) as? [TouristAttraction]
     }
-    func getTop10Attractions() -> Array<TouristAttraction> {
+    func getTop5Attractions() -> Array<TouristAttraction> {
         let sortedAttractions = attractionsList.sorted(by: {lhs, rhs in
             return lhs.ratingAverage > rhs.ratingAverage
         })
-        if(sortedAttractions.count <= 10) {
-            return Array(sortedAttractions.prefix(sortedAttractions.count))
+        if(sortedAttractions.count <= 5) {
+            return Array(sortedAttractions.prefix(sortedAttractions.count)).filter({$0.ratingAverage != 0})
         } else {
-            return Array(sortedAttractions.prefix(10))
+            return Array(sortedAttractions.prefix(5)).filter({$0.ratingAverage != 0})
         }
         
     }

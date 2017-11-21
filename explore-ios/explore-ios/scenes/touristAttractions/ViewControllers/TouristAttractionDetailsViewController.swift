@@ -37,8 +37,7 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
             countryTextField.text = touristAttraction?.country
             cityTextField.text = touristAttraction?.city
             attractionImage.image = attraction.image
-        }
-        if nameTextField.text != "" {
+            
             let deleteBtn = UIBarButtonItem(image: UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(deleteTouristAttraction))
             deleteBtn.tintColor = .black
             self.navigationItem.rightBarButtonItem  = deleteBtn
@@ -70,15 +69,12 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     @IBAction func saveButtonAction(_ sender: Any) {
         let attraction : TouristAttraction
         if nameTextField.text != "" && countryTextField.text != "" && cityTextField.text != "" {
-            if let image = attractionImage.image {
-                attraction = TouristAttraction(name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!, image: image)
-            } else {
-                attraction = TouristAttraction(name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!)
-            }
+            let image = attractionImage.image //{
+            attraction = TouristAttraction(id: nil, name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!, image: image, average: touristAttraction?.ratingAverage)
             if attractionIndex != nil {
-                TouristAttractions.shared.updateAttraction(withId: (touristAttraction?.Id)!, attraction: attraction)
+                TouristAttractions.shared.updateAttraction(withId: (touristAttraction?.Id)!, attraction: attraction) // update
             } else {
-                TouristAttractions.shared.addAttraction(attraction: attraction)
+                TouristAttractions.shared.addAttraction(attraction: attraction) // add new
             }
             TouristAttractions.shared.saveAttractions()
             navigationController?.popViewController(animated: true)

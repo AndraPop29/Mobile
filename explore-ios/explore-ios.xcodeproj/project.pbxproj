@@ -14,6 +14,7 @@
 		C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */; };
 		C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB021FB320FB0023CB25 /* TouristAttraction.swift */; };
 		C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */; };
+		C07BD2121FC40D2200911750 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07BD2111FC40D2200911750 /* Images.xcassets */; };
 		C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */; };
 		C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */; };
 		C084021B1FBAC82200FB662C /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C084021A1FBAC82200FB662C /* RatingControl.swift */; };
@@ -24,7 +25,6 @@
 		C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8FFD51FB04BE50092BEE2 /* BottomBorderTextField.swift */; };
 		C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF25801FB045590067B1C8 /* AppDelegate.swift */; };
 		C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25841FB045590067B1C8 /* Main.storyboard */; };
-		C0AF25881FB045590067B1C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25871FB045590067B1C8 /* Assets.xcassets */; };
 		C0AF258B1FB045590067B1C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */; };
 		EBB01D9407053DC3C3AEC83C /* Pods_explore_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250A733EE36B1CDAF9DF5868 /* Pods_explore_ios.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +40,7 @@
 		C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsViewController.swift; sourceTree = "<group>"; };
 		C078CB021FB320FB0023CB25 /* TouristAttraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttraction.swift; sourceTree = "<group>"; };
 		C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionDetailsViewController.swift; sourceTree = "<group>"; };
+		C07BD2111FC40D2200911750 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionCell.swift; sourceTree = "<group>"; };
 		C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouristAttractionCell.xib; sourceTree = "<group>"; };
 		C084021A1FBAC82200FB662C /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		C0AF257D1FB045590067B1C8 /* explore-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "explore-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0AF25801FB045590067B1C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0AF25851FB045590067B1C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C0AF25871FB045590067B1C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0AF258A1FB045590067B1C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0AF258C1FB045590067B1C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,7 +235,7 @@
 				C01956EF1FB04DD0005E4A98 /* scenes */,
 				C0AF25801FB045590067B1C8 /* AppDelegate.swift */,
 				C0AF25841FB045590067B1C8 /* Main.storyboard */,
-				C0AF25871FB045590067B1C8 /* Assets.xcassets */,
+				C07BD2111FC40D2200911750 /* Images.xcassets */,
 				C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */,
 				C0AF258C1FB045590067B1C8 /* Info.plist */,
 			);
@@ -312,9 +312,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C07BD2121FC40D2200911750 /* Images.xcassets in Resources */,
 				C0AF258B1FB045590067B1C8 /* LaunchScreen.storyboard in Resources */,
 				C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */,
-				C0AF25881FB045590067B1C8 /* Assets.xcassets in Resources */,
 				C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */,
 				C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */,
 			);

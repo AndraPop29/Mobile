@@ -70,6 +70,12 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     func loadMockData() {
         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Collosseum", country: "Italy", city: "Rome" ,image: UIImage(named: "the-colloseum-andrey-starostin")!))
         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Eiffel Tower", country: "France", city: "Paris", image: UIImage(named: "eiffel")!))
+        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Venice Canals", country: "Italy", city: "Venice", image: UIImage(named: "venice")!))
+         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Pompeii", country: "Italy", city: "Pompei", image: UIImage(named: "pompeii")!))
+         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Leaning Tower of Pisa", country: "Italy", city: "Pisa", image: UIImage(named: "towerPisa")!))
+         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Amalfi Coast", country: "Italy", city: "Campania", image: UIImage(named: "amalfi")!))
+         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Vatican City", country: "Italy", city: "Vatican", image: UIImage(named: "vatican")!))
+        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Palace of Versailles", country: "France", city: "Versailles", image: UIImage(named: "versailles")!))
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -97,6 +103,7 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         cell.touristAttraction = attraction
         cell.nameLabel.text = attraction.name
         cell.attractionImageView.image = attraction.image
+        cell.ratingControl.rating = Int(attraction.ratingAverage)
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

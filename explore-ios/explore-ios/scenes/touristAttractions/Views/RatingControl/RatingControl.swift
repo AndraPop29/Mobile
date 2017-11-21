@@ -15,7 +15,6 @@ class RatingControl: UIStackView {
         didSet {
             if let view = self.superview?.superview?.superview as? TouristAttractionCell {
                 TouristAttractions.shared.rateAttraction(named: (view.touristAttraction?.name)!, with: Double(rating))
-               // TouristAttractions.shared.rateAttraction(named: view.touristAttraction.name, wi)
             }
             updateButtonSelectionStates()
         }
@@ -89,5 +88,7 @@ class RatingControl: UIStackView {
             // Otherwise set the rating to the selected star
             rating = selectedRating
         }
+        TouristAttractions.shared.saveAttractions()
+
     }
 }
