@@ -41,7 +41,6 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
             loadMockData()
         }
         pickerView = UIPickerView()
-        countryTextField.inputView = pickerView
         self.pickerView?.delegate = self
         self.pickerView?.dataSource = self
     }
@@ -60,6 +59,7 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         countryTextField.text = TouristAttractions.shared.getCountries()[0]
+        countryTextField.inputView = pickerView
         tableView.reloadData()
     }
 
