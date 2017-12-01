@@ -15,32 +15,10 @@ import {
 import {StackNavigator} from 'react-navigation';
 import DestinationsList from './DestinationsList.js';
 import EditDestination from './EditDestination.js';
-global.attractionsArray = [{id: 1, name: "Colloseum", country: "Italy"},{id: 2, name: "Eiffel Tower", country: "France"},{id: 3, name: "FSEGA", country:"Romania"}];
-// const instructions = Platform.select({
-//   ios: 'Press Cmd+R to reload,\n' +
-//     'Cmd+D or shake for dev menu',
-//   android: 'Double tap R on your keyboard to reload,\n' +
-//     'Shake or press menu button for dev menu',
-// });
-
-// export default class App extends Component<{}> {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text style={styles.welcome}>
-//           Welcome to React Native!
-//         </Text>
-//         <Text style={styles.instructions}>
-//           To get started, edit App.js
-//         </Text>
-//         <Text style={styles.instructions}>
-//           {instructions}
-//         </Text>
-//       </View>
-//     );
-//   }
-// }
-
+import Statistics from './Statistics.js';
+global.attractionsArray = [{id: 1, name: "Colloseum", city: "Rome", country: "Italy", ratingSum: 0, ratingAverage: 0, noOfRatings: 0},
+{id: 2, name: "Eiffel Tower", city: "Paris", country: "France", ratingSum: 0, ratingAverage: 0, noOfRatings: 0},{id: 3, name: "FSEGA", city: "Cluj-Napoca", country:"Romania", ratingSum: 0, ratingAverage: 0, noOfRatings: 0}];
+global.count = 4;
 const ModalStack = StackNavigator({
   Home:{
     screen: DestinationsList,
@@ -48,6 +26,10 @@ const ModalStack = StackNavigator({
     Destination: {
         path: 'editDestinations/:destination',
         screen: EditDestination,
+    },
+    Statistics: {
+      path: 'statistics',
+      screen: Statistics,
     }
 });
 

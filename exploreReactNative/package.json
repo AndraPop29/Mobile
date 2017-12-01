@@ -7,10 +7,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.50.1",
+    "react-native-chart": "^1.0.8-beta",
+    "react-native-charts": "^3.0.0",
+    "react-native-charts-wrapper": "^0.3.1",
     "react-native-communications": "^2.2.1",
     "react-native-mail": "^3.0.5",
+    "react-native-pathjs-charts": "0.0.33",
     "react-navigation": "^1.0.0-beta.19"
   },
   "devDependencies": {
