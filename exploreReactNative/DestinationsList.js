@@ -28,8 +28,10 @@ export default class DestinationsList extends Component {
   }
   componentWillMount() {
       AsyncStorage.getItem("attractionsArray").then((value) => {
-          global.attractionsArray = JSON.parse(value);
-          this.update();
+          if(value != "null") {
+            global.attractionsArray = JSON.parse(value);
+            this.update();
+        }
       })
   }
   saveArray() {

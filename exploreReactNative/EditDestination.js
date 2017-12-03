@@ -72,16 +72,15 @@ export default class EditDestination extends React.Component {
                     ratingAverage: parseInt(this.state.ratingAverage),
                     noOfRatings: 1
                 };
-                console.warn(attr);
                 global.count = global.count + 1;
-                //global.attractionsArray.push(attr); 
+                global.attractionsArray.push(attr); 
                 this.props.navigation.state.params.onGoBack();
                 this.props.navigation.goBack(); 
             }          
         }
         else{
             var element = this.state;
-            for (var i = 0; i < attractionsArray.length; i++) {
+            for (var i = 0; i < global.attractionsArray.length; i++) {
                 if (global.attractionsArray[i].id === element.id) {
                     if(ratingChanged ===true) {
                         var noOfRatings = element.noOfRatings + 1;
