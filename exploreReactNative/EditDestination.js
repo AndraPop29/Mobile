@@ -57,12 +57,12 @@ export default class EditDestination extends React.Component {
       });
 
     save() {
-        if (this.state.id === 0){
-            if(this.state.name === "" || this.state.country ==="" || this.state.city ==="" || ratingChanged ===false) {
-                Alert.alert(
-                    'None of the fields can be empty'
-                 )
-            } else {
+        if(this.state.name === "" || this.state.country ==="" || this.state.city ==="" || ratingChanged ===false) {
+            Alert.alert(
+                'None of the fields can be empty'
+             )
+        }
+        else if (this.state.id === 0){
                 var attr = {
                     id: global.count,
                     name: this.state.name,
@@ -76,7 +76,7 @@ export default class EditDestination extends React.Component {
                 global.attractionsArray.push(attr); 
                 this.props.navigation.state.params.onGoBack();
                 this.props.navigation.goBack(); 
-            }          
+                      
         }
         else{
             var element = this.state;

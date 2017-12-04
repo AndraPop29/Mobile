@@ -16,12 +16,22 @@ import {StackNavigator} from 'react-navigation';
 import DestinationsList from './DestinationsList.js';
 import EditDestination from './EditDestination.js';
 import Statistics from './Statistics.js';
+import LoginForm from './LoginForm.js'
+import HomeScreen from './Home.js';
 global.attractionsArray = [{id: 1, name: "Colloseum", city: "Rome", country: "Italy", ratingSum: 0, ratingAverage: 0, noOfRatings: 0},
 {id: 2, name: "Eiffel Tower", city: "Paris", country: "France", ratingSum: 0, ratingAverage: 0, noOfRatings: 0},{id: 3, name: "FSEGA", city: "Cluj-Napoca", country:"Romania", ratingSum: 0, ratingAverage: 0, noOfRatings: 0}];
 global.count = 4;
 const ModalStack = StackNavigator({
   Home:{
-    screen: DestinationsList,
+    screen: HomeScreen,
+    //screen: LoginForm,
+  },
+  // LoginForm: {
+  //   screen: LoginForm,
+  // },
+  DestinationsList: {
+      path: 'destinationsList',
+      screen: DestinationsList,
   },
     Destination: {
         path: 'editDestinations/:destination',

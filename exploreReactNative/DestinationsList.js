@@ -2,6 +2,9 @@
 
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
+import firebase from 'firebase';
+import { LoginForm } from './LoginForm';
+
 import {
   View,
   ListView,
@@ -26,6 +29,7 @@ export default class DestinationsList extends Component {
     }
   
   }
+  
   componentWillMount() {
       AsyncStorage.getItem("attractionsArray").then((value) => {
           if(value != "null") {
