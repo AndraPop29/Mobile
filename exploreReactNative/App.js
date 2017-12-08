@@ -23,15 +23,8 @@ global.attractionsArray = [{id: 1, name: "Colloseum", city: "Rome", country: "It
 global.count = 4;
 const ModalStack = StackNavigator({
   Home:{
-    screen: HomeScreen,
-    //screen: LoginForm,
-  },
-  // LoginForm: {
-  //   screen: LoginForm,
-  // },
-  DestinationsList: {
-      path: 'destinationsList',
-      screen: DestinationsList,
+    //screen: HomeScreen,
+    screen: DestinationsList,
   },
     Destination: {
         path: 'editDestinations/:destination',

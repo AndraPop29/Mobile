@@ -70,9 +70,10 @@ export default class HomeScreen extends Component {
         //     console.warn("dshdaj");
         //     this.checkLogIn();
         // }
+       
         return(
             <View style={{flex: 1}}>
-                <DestinationsList />
+              <LoginForm />
             </View>
 
         );

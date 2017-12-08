@@ -21,6 +21,7 @@ export default class DestinationsList extends Component {
   
     var dataSource = new ListView.DataSource({rowHasChanged:(r1,r2) => r1.id != r2.id});
     this.state = {  
+      loggedIn : false,
       dataSource: dataSource.cloneWithRows(global.attractionsArray),
       countries: global.attractionsArray.map((value) => value.country).sort().filter(function(item, pos, ary) {
         return !pos || item != ary[pos - 1];
@@ -29,14 +30,35 @@ export default class DestinationsList extends Component {
     }
   
   }
-  
+
+  async getFromAsyncStorage() {
+    try {
+      const value = await AsyncStorage.getItem("attractionsArray");
+      if (value !== null){
+        global.attractionsArray = JSON.parse(value);
+        this.update();
+        console.warn(value);
+      }
+    } catch (error) {
+      console.warn("error getting stuff");
+    }
+  }
+  initFirApp() {
+      firebase.initializeApp({
+        apiKey: 'AIzaSyDY1AG-hCcgFRcXbqa5xLafRxMuJDa6XP4',
+        authDomain: 'explore-ee9b3.firebaseapp.com',
+        databaseURL: 'https://explore-ee9b3.firebaseio.com',
+        projectId: 'explore-ee9b3',
+        storageBucket: 'explore-ee9b3.appspot.com',
+        messagingSenderId: '488721145786'
+    });
+    
+  }
   componentWillMount() {
-      AsyncStorage.getItem("attractionsArray").then((value) => {
-          if(value != "null") {
-            global.attractionsArray = JSON.parse(value);
-            this.update();
-        }
-      })
+  
+    // this.initFirApp();
+      this.getFromAsyncStorage();
+      //this.checkLogIn();
   }
   saveArray() {
     AsyncStorage.setItem("attractionsArray", JSON.stringify(global.attractionsArray));
@@ -93,17 +115,38 @@ export default class DestinationsList extends Component {
     });
   }
 
+  checkLogIn() {
+    // firebase.auth().signOut().then(() => {
+    // });
+    var logged;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            logged = true;
+        } else {
+            logged = false;
+        }
+      });
+      this.setState({loggedIn : logged});
+    }
+
+ 
+
   render() {
+   
+    // if (this.state.loggedIn == false) {
+    //     return (<LoginForm onAuthStateChanged = {this.checkLogIn}/>);
+    // } else {
     return(
       <View style={{flex: 1}}>
-        <ListView dataSource={this.state.dataSource} renderRow={this.renderRow.bind(this)}/>
-        <Picker selectedValue = {this.state.country} onValueChange = {this.updateCountry}>
-               {this.state.countries.map((value) => <Picker.Item label={value} value={value}/>)}
-            </Picker>
-        <Button title="Add" onPress={()=>this.add()}/>  
-        <Button title="Save" onPress={()=>this.saveArray()}/>  
-      </View>
+             <ListView dataSource={this.state.dataSource} renderRow={this.renderRow.bind(this)}/>
+             <Picker selectedValue = {this.state.country} onValueChange = {this.updateCountry}>
+                    {this.state.countries.map((value) => <Picker.Item label={value} value={value}/>)}
+                 </Picker>
+             <Button title="Add" onPress={()=>this.add()}/>  
+             <Button title="Save" onPress={()=>this.saveArray()}/>  
+           </View> 
     );
+  //}
   }
   
 };
@@ -128,4 +171,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   }
 })
+
+
 
