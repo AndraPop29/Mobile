@@ -18,6 +18,7 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
        
     }
     @IBOutlet weak var headerView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = nil
@@ -58,8 +59,11 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        countryTextField.text = TouristAttractions.shared.getCountries()[0]
-        countryTextField.inputView = pickerView
+        if TouristAttractions.shared.attractionsList.count > 0 {
+            countryTextField.text = TouristAttractions.shared.getCountries()[0]
+            countryTextField.inputView = pickerView
+        }
+       
         tableView.reloadData()
     }
 

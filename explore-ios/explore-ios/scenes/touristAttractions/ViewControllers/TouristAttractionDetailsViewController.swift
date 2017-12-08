@@ -19,7 +19,8 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     var attractionIndex: Int?
     
     @objc func deleteTouristAttraction() {
-        TouristAttractions.shared.attractionsList.remove(at: (touristAttraction?.Id)!)
+        //touristAttractions.sha
+        TouristAttractions.shared.removeBy(id: (touristAttraction?.Id)!)
         TouristAttractions.shared.saveAttractions()
         navigationController?.popViewController(animated: true)
     }

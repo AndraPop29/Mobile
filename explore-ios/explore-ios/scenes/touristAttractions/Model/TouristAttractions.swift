@@ -54,6 +54,16 @@ class TouristAttractions {
         }
         
     }
+    func removeBy(id: Int) {
+        var i = 0
+        while(i<attractionsList.count) {
+            if attractionsList[i].Id == id {
+                
+                attractionsList.remove(at: i)
+            }
+            i = i+1
+        }
+    }
     func rateAttraction(named name: String, with rating: Double) {
         if let i = attractionsList.index(where: { $0.name ==  name}) {
             attractionsList[i].rateTouristAttraction(number: rating)
