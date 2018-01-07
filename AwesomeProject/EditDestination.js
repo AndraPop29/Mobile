@@ -1,6 +1,7 @@
 'use-strict';
 
 import React from 'react';
+import firebase from 'firebase';
 
 import {
   StyleSheet,
@@ -17,6 +18,7 @@ import {
   Alert, 
   FormInput,
   FormLabel,
+  AsyncStorage
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Pie } from 'react-native-pathjs-charts';
@@ -29,10 +31,12 @@ export default class EditDestination extends React.Component {
             name: "",
             city:"",
             country:"",
-            ratingSum: 0,
             ratingAverage: 0,
-            noOfRatings: 0
+            userRole: null,
+            userKey: null
         };
+        this.itemsRef = firebase.database().ref('/touristAttractions');
+        this.state.userRole = this.props.navigation.state.params.userRole;             
         
         if (this.props.navigation.state.params.dest.id !== undefined) {
             var toEdit = this.props.navigation.state.params.dest;
@@ -40,11 +44,22 @@ export default class EditDestination extends React.Component {
             this.state.name = toEdit.name;
             this.state.city = toEdit.city;
             this.state.country = toEdit.country;
-            this.state.ratingSum = toEdit.ratingSum;
-            this.state.ratingAverage = toEdit.ratingAverage;            
-            this.state.noOfRatings = toEdit.noOfRatings;
+            this.state.ratingAverage = toEdit.rating;   
         }
+        // this.getFromAsyncStorage();
+        // this.setUserRating();
     }
+
+    // setUserRating() {
+    //     firebase.database().ref('/users/'+this.state.userKey+'/ratings').once('value', (snap) => {
+    //         snap.forEach((childSnap) => {
+    //         if(childSnap.val().attrId == this.state.id) {
+    //             this.setState({ratingAverage: childSnap.val().rating});                     
+    //         }
+    //         });
+    //     });        
+
+    // }
 
     
 
@@ -56,55 +71,108 @@ export default class EditDestination extends React.Component {
         headerLeft:  <Button title = "Back" onPress={ () => { navigation.goBack() } }  /> 
       });
 
+    addToFirebase(attr) {
+            this.itemsRef.push({
+                city: attr.city,
+                country: attr.country,
+                name: attr.name,
+                ratingAverage: attr.ratingAverage
+              });
+       
+    }
+
+    async getFromAsyncStorage() {
+        try {
+          const value = await AsyncStorage.getItem("user_key");
+          console.warn(value);
+          if (value !== null){
+            this.setState({userKey : JSON.parse(value)});
+            //this.setUserRating();
+          }
+        } catch (error) {
+          console.warn(error);
+        }
+    
+        
+      }
+
     save() {
-        if(this.state.name === "" || this.state.country ==="" || this.state.city ==="" || ratingChanged ===false) {
+        if(this.state.name === "" || this.state.country ==="" || this.state.city ==="") {
             Alert.alert(
                 'None of the fields can be empty'
              )
         }
         else if (this.state.id === 0){
                 var attr = {
-                    id: global.count,
                     name: this.state.name,
                     city: this.state.city,
                     country: this.state.country,
-                    ratingSum: parseInt(this.state.ratingAverage),
                     ratingAverage: parseInt(this.state.ratingAverage),
-                    noOfRatings: 1
                 };
                 global.count = global.count + 1;
                 global.attractionsArray.push(attr); 
+                this.addToFirebase(attr);
                 this.props.navigation.state.params.onGoBack();
                 this.props.navigation.goBack(); 
                       
         }
         else{
-            var element = this.state;
-            for (var i = 0; i < global.attractionsArray.length; i++) {
-                if (global.attractionsArray[i].id === element.id) {
-                    if(ratingChanged ===true) {
-                        var noOfRatings = element.noOfRatings + 1;
-                        element.ratingSum = global.attractionsArray[i].ratingSum + parseInt(this.state.ratingAverage);
-                        element.noOfRatings = noOfRatings;
-                        element.ratingAverage = element.ratingSum / noOfRatings;
+            if(ratingChanged ===true) {
+                var element = this.state;
+                for (var i = 0; i < global.attractionsArray.length; i++) {
+                    if (global.attractionsArray[i].id === element.id) {
+                        if(ratingChanged ===true) {
+                            var id = element.id;
+                            var updated =  false;
+                            
+                            firebase.database().ref('/users/'+this.state.userKey+'/ratings').once('value', (snap) => {
+                                snap.forEach((childSnap) => {
+                                if(childSnap.val().attrId == element.id) {
+                                    firebase.database().ref('/users/'+this.state.userKey+'/ratings').child(childSnap.key).update({attrId: id, rating: this.state.ratingAverage});    
+                                    updated = true;                       
+                                }
+                                });
+                                if(!updated) {
+                                    firebase.database().ref('/users/'+this.state.userKey+'/ratings').push({
+                                        attrId: id,
+                                        rating: element.ratingAverage
+                                    });
+                                }
+                            });
+                            
+                        global.attractionsArray[i] = element;
+                      //  global.attractionsArray[i].ratingAverage = 0;
+                        
                     }
-                    global.attractionsArray[i] = element;
-                    
                 }
+            
             }
-            this.props.navigation.state.params.onGoBack();
-            this.props.navigation.goBack();
         }
-   
+        this.itemsRef.child(element.id).update({city: element.city, country: element.country, name: element.name, ratingAverage: 0});                                    
+        this.props.navigation.state.params.onGoBack();
+        this.props.navigation.goBack();
+         }
     }
+
+    removeFromFirebase(element) {
+        this.itemsRef.child(element.id).remove();
+      }
+
+    componentWillMount() {
+      
+        this.getFromAsyncStorage();
+    }
+
+
     delete() {
         if (this.state.id === 0){        
             Alert.alert(
                 'The location was not added, therefore cannot be deleted'
              )
-        }
+        }   
         else{
             var element = this.state;
+            this.removeFromFirebase(element)
             for (var i = 0; i < attractionsArray.length; i++) {
                 if (global.attractionsArray[i].id === element.id) {
                     global.attractionsArray.splice(i, 1);
@@ -115,7 +183,9 @@ export default class EditDestination extends React.Component {
         }
     }
     handleRatingChange(rating) {
-        this.setState({ratingAverage: rating});
+       // console.warn(rating);
+        var newRating = rating;
+        this.setState({ratingAverage: newRating});
         ratingChanged = true;
       }
 
@@ -144,54 +214,102 @@ export default class EditDestination extends React.Component {
               fontWeight: true,
               color: '#ECF0F1'
             }
-          }
-         
-        return (
-            <View style = {styles.container}>
-            <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Name"
-               placeholderTextColor = "#9a73ef"
-               autoCapitalize = "none"
-               onChangeText = {(name)=>this.setState({name})}
-               value={this.state.name.toString()}/>
-
-
-            <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "City"
-               placeholderTextColor = "#9a73ef"
-               autoCapitalize = "none"
-               onChangeText = {(city)=>this.setState({city})}
-               value={this.state.city.toString()}/>
-            
-            <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Country"
-               placeholderTextColor = "#9a73ef"
-               autoCapitalize = "none"
-               onChangeText = {(country)=>this.setState({country})}
-               value={this.state.country.toString()}/>
-
-            <TextInput style = {styles.input} keyboardType = 'numeric'
-               underlineColorAndroid = "transparent"
-               placeholder = "Rating"
-               placeholderTextColor = "#9a73ef"
-               autoCapitalize = "none"
-               onChangeText = {(rating) => this.handleRatingChange(rating)}
-               value={this.state.ratingAverage.toString()}/>
-
+          }         
+        if (this.state.userRole == "ADMIN") {
+            return (
+                <View style = {styles.container}>
+                <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholder = "Name"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   onChangeText = {(name)=>this.setState({name})}
+                   value={this.state.name.toString()}/>
+    
+    
+                <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholder = "City"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   onChangeText = {(city)=>this.setState({city})}
+                   value={this.state.city.toString()}/>
+                
+                <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholder = "Country"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   onChangeText = {(country)=>this.setState({country})}
+                   value={this.state.country.toString()}/>
+    
+                <TextInput style = {styles.input} keyboardType = 'numeric'
+                   underlineColorAndroid = "transparent"
+                   placeholder = "Rating"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   onChangeText = {(rating) => this.handleRatingChange(rating)}
+                   value={this.state.ratingAverage.toString()}/>
+    
+    
+                    <TouchableOpacity style = {styles.submitButton} onPress={()=>this.save()}>
+                    <Text style = {styles.submitButtonText}> Save </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style = {styles.submitButton} onPress={()=>this.delete()}>
+                    <Text style = {styles.submitButtonText}> Delete </Text>
+    
+                     </TouchableOpacity> 
+    
+                </View>
+            );
+        } else {
+            return (
+                <View style = {styles.container}>
+                <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholder = "Name"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   editable = "false"
+                   onChangeText = {(name)=>this.setState({name})}
+                   value={this.state.name.toString()}/>
+    
+    
+                <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholder = "City"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   editable = "false"                   
+                   onChangeText = {(city)=>this.setState({city})}
+                   value={this.state.city.toString()}/>
+                
+                <TextInput style = {styles.input}
+                   underlineColorAndroid = "transparent"
+                   placeholder = "Country"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   editable = "false"                   
+                   onChangeText = {(country)=>this.setState({country})}
+                   value={this.state.country.toString()}/>
+    
+                <TextInput style = {styles.input} keyboardType = 'numeric'
+                   underlineColorAndroid = "transparent"
+                   placeholder = "Rating"
+                   placeholderTextColor = "#9a73ef"
+                   autoCapitalize = "none"
+                   onChangeText = {(rating) => this.handleRatingChange(rating)}
+                   value={this.state.ratingAverage.toString()}/>
 
                 <TouchableOpacity style = {styles.submitButton} onPress={()=>this.save()}>
-                <Text style = {styles.submitButtonText}> Save </Text>
+                    <Text style = {styles.submitButtonText}> Save </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {styles.submitButton} onPress={()=>this.delete()}>
-                <Text style = {styles.submitButtonText}> Delete </Text>
+    
+                </View>
+            );
 
-                 </TouchableOpacity> 
-
-            </View>
-        );
+        }
+  
     }
 };
 

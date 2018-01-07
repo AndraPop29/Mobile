@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, AsyncStorage } from 'react-native';
 import firebase from 'firebase';
 import TitledInput from './common';
 
-class LoginForm extends Component {
-    state = { email: '', password: '', error: '', loading: false };
+//const auth = firebase.auth();
+
+export default class LoginForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { email: '', password: '', error: '', loading: false , loggedIn : false};
+      }
+   
     onLoginPress() {
         this.setState({ error: '', loading: true });
-
         const { email, password } = this.state;
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => { 
                 this.setState({ error: '', loading: false }); 
-               // this.props.checkLogin();
             })
             .catch(() => {
                this.setState({ error: 'Authentication failed.', loading: false });
@@ -25,6 +29,36 @@ class LoginForm extends Component {
         }
         return <Button onPress={this.onLoginPress.bind(this)} title="Log in" />;
     }
+    componentWillMount() {
+        firebase.initializeApp({
+            apiKey: 'AIzaSyDY1AG-hCcgFRcXbqa5xLafRxMuJDa6XP4',
+            authDomain: 'explore-ee9b3.firebaseapp.com',
+            databaseURL: 'https://explore-ee9b3.firebaseio.com',
+            projectId: 'explore-ee9b3',
+            storageBucket: 'explore-ee9b3.appspot.com',
+            messagingSenderId: '488721145786'
+        });
+        //firebase.auth().signOut();
+        firebase.auth().onAuthStateChanged( user => {
+            if(user) {
+                    console.warn(user.email);
+                    if (user.email !== null){
+                      firebase.database().ref('/users').once('value', (snap) => {
+                        snap.forEach((childSnap) => {
+                         if(childSnap.val().email == user.email) {
+                            AsyncStorage.setItem('user_role', childSnap.val().role);  
+                            AsyncStorage.setItem('user_key', JSON.stringify(childSnap.key));                                    
+                         }
+                        });
+                       });
+                    }
+                this.props.navigation.navigate("DestinationsList")                
+            }
+        }
+          
+        ); 
+    }
+
     render() {
         return (
             <View>
@@ -57,4 +91,4 @@ const styles = {
     }
 };
 
-export {LoginForm};
+//export {LoginForm};

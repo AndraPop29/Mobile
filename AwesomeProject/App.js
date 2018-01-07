@@ -18,12 +18,15 @@ import EditDestination from './EditDestination.js';
 import Statistics from './Statistics.js';
 import LoginForm from './LoginForm.js'
 import HomeScreen from './Home.js';
+global.items = [];
 global.attractionsArray = [{id: 1, name: "Colloseum", city: "Rome", country: "Italy", ratingSum: 0, ratingAverage: 0, noOfRatings: 0},
 {id: 2, name: "Eiffel Tower", city: "Paris", country: "France", ratingSum: 0, ratingAverage: 0, noOfRatings: 0},{id: 3, name: "FSEGA", city: "Cluj-Napoca", country:"Romania", ratingSum: 0, ratingAverage: 0, noOfRatings: 0}];
 global.count = 4;
 const ModalStack = StackNavigator({
   Home:{
-    //screen: HomeScreen,
+    screen: LoginForm,
+  },
+  DestinationsList:{
     screen: DestinationsList,
   },
     Destination: {
