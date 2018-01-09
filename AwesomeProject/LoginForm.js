@@ -41,18 +41,20 @@ export default class LoginForm extends Component {
         //firebase.auth().signOut();
         firebase.auth().onAuthStateChanged( user => {
             if(user) {
-                    console.warn(user.email);
+                    var userRole = null;
                     if (user.email !== null){
                       firebase.database().ref('/users').once('value', (snap) => {
                         snap.forEach((childSnap) => {
                          if(childSnap.val().email == user.email) {
+                            userRole = childSnap.val().role;    
                             AsyncStorage.setItem('user_role', childSnap.val().role);  
-                            AsyncStorage.setItem('user_key', JSON.stringify(childSnap.key));                                    
+                            AsyncStorage.setItem('user_key', JSON.stringify(childSnap.key));         
+                            this.props.navigation.navigate("DestinationsList",  { role:  childSnap.val().role});                
+                            
                          }
                         });
                        });
                     }
-                this.props.navigation.navigate("DestinationsList")                
             }
         }
           

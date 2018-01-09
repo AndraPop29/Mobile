@@ -2,6 +2,7 @@
 
 import React from 'react';
 import firebase from 'firebase';
+import { Notifications } from 'expo';
 
 import {
   StyleSheet,
@@ -22,6 +23,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Pie } from 'react-native-pathjs-charts';
+import DataManager from './DataManager.js';
 var ratingChanged = false;                      
 export default class EditDestination extends React.Component {
     constructor(props) {
@@ -36,7 +38,9 @@ export default class EditDestination extends React.Component {
             userKey: null
         };
         this.itemsRef = firebase.database().ref('/touristAttractions');
-        this.state.userRole = this.props.navigation.state.params.userRole;             
+        this.state.userRole = this.props.navigation.state.params.userRole;    
+        this.state.ratingAverage = 0;   
+        
         
         if (this.props.navigation.state.params.dest.id !== undefined) {
             var toEdit = this.props.navigation.state.params.dest;
@@ -44,22 +48,37 @@ export default class EditDestination extends React.Component {
             this.state.name = toEdit.name;
             this.state.city = toEdit.city;
             this.state.country = toEdit.country;
-            this.state.ratingAverage = toEdit.rating;   
         }
-        // this.getFromAsyncStorage();
-        // this.setUserRating();
+
     }
 
-    // setUserRating() {
-    //     firebase.database().ref('/users/'+this.state.userKey+'/ratings').once('value', (snap) => {
-    //         snap.forEach((childSnap) => {
-    //         if(childSnap.val().attrId == this.state.id) {
-    //             this.setState({ratingAverage: childSnap.val().rating});                     
-    //         }
-    //         });
-    //     });        
+    async setupNotifications() {
+        console.warn("hgjhgjhghjg");
+        let result = await   
+        Permissions.askAsync(Permissions.NOTIFICATIONS);
+        if (Constants.lisDevice && resut.status === 'granted') {
+         console.log('Notification permissions granted.')
+        }
+        const localNotification = {
+            title: '',
+            body: '', // (string) — body text of the notification.
+            ios: { // (optional) (object) — notification configuration specific to iOS.
+              sound: true // (optional) (boolean) — if true, play a sound. Default: false.
+            },
+          };
+    
+          let t = new Date();
+          t.setSeconds(t.getSeconds() + 10);
+          const schedulingOptions = {
+              time: t, // (date or number) — A Date object representing when to fire the notification or a number in Unix epoch time. Example: (new Date()).getTime() + 1000 is one second from now.
+              repeat: repeat
+            };
 
-    // }
+            Notifications.scheduleLocalNotificationAsync(localNotification, schedulingOptions);
+    }
+
+   
+
 
     
 
@@ -71,20 +90,11 @@ export default class EditDestination extends React.Component {
         headerLeft:  <Button title = "Back" onPress={ () => { navigation.goBack() } }  /> 
       });
 
-    addToFirebase(attr) {
-            this.itemsRef.push({
-                city: attr.city,
-                country: attr.country,
-                name: attr.name,
-                ratingAverage: attr.ratingAverage
-              });
-       
-    }
+  
 
     async getFromAsyncStorage() {
         try {
           const value = await AsyncStorage.getItem("user_key");
-          console.warn(value);
           if (value !== null){
             this.setState({userKey : JSON.parse(value)});
             //this.setUserRating();
@@ -92,11 +102,27 @@ export default class EditDestination extends React.Component {
         } catch (error) {
           console.warn(error);
         }
+        try {
+            const value = await AsyncStorage.getItem("ratingsArray");
+            if (value !== null){
+              for(var i = 0; i < JSON.parse(value).length; i ++) {                
+                  if(JSON.parse(value)[i].attrId === this.state.id) {
+                    var rat = JSON.parse(value)[i].rating
+                    this.setState({ratingAverage : rat});                    
+
+                  }
+                
+              }
+            }
+          } catch (error) {
+            console.warn(error);
+          }
     
-        
-      }
+    }
 
     save() {
+        var dm = new DataManager();
+        
         if(this.state.name === "" || this.state.country ==="" || this.state.city ==="") {
             Alert.alert(
                 'None of the fields can be empty'
@@ -109,58 +135,40 @@ export default class EditDestination extends React.Component {
                     country: this.state.country,
                     ratingAverage: parseInt(this.state.ratingAverage),
                 };
-                global.count = global.count + 1;
-                global.attractionsArray.push(attr); 
-                this.addToFirebase(attr);
-                this.props.navigation.state.params.onGoBack();
-                this.props.navigation.goBack(); 
+                dm.addToFirebase(attr).then(() => {
+                    this.props.navigation.state.params.onGoBack();
+                    this.props.navigation.goBack(); 
+                }).catch(error => {
+                    console.warn(error);
+                });
+               
                       
         }
         else{
+            var element = this.state;            
             if(ratingChanged ===true) {
-                var element = this.state;
                 for (var i = 0; i < global.attractionsArray.length; i++) {
                     if (global.attractionsArray[i].id === element.id) {
                         if(ratingChanged ===true) {
                             var id = element.id;
-                            var updated =  false;
-                            
-                            firebase.database().ref('/users/'+this.state.userKey+'/ratings').once('value', (snap) => {
-                                snap.forEach((childSnap) => {
-                                if(childSnap.val().attrId == element.id) {
-                                    firebase.database().ref('/users/'+this.state.userKey+'/ratings').child(childSnap.key).update({attrId: id, rating: this.state.ratingAverage});    
-                                    updated = true;                       
-                                }
-                                });
-                                if(!updated) {
-                                    firebase.database().ref('/users/'+this.state.userKey+'/ratings').push({
-                                        attrId: id,
-                                        rating: element.ratingAverage
-                                    });
-                                }
-                            });
-                            
-                        global.attractionsArray[i] = element;
-                      //  global.attractionsArray[i].ratingAverage = 0;
-                        
+                            dm.updateUserRating(id, this.state.ratingAverage, this.state.userKey);
                     }
                 }
             
             }
         }
-        this.itemsRef.child(element.id).update({city: element.city, country: element.country, name: element.name, ratingAverage: 0});                                    
-        this.props.navigation.state.params.onGoBack();
-        this.props.navigation.goBack();
+        dm.updateAttraction(element).then(() => {
+            this.props.navigation.state.params.onGoBack();
+            this.props.navigation.goBack();
+        });
+       
          }
     }
-
-    removeFromFirebase(element) {
-        this.itemsRef.child(element.id).remove();
-      }
 
     componentWillMount() {
       
         this.getFromAsyncStorage();
+        this.setupNotifications();
     }
 
 
@@ -172,18 +180,18 @@ export default class EditDestination extends React.Component {
         }   
         else{
             var element = this.state;
-            this.removeFromFirebase(element)
-            for (var i = 0; i < attractionsArray.length; i++) {
-                if (global.attractionsArray[i].id === element.id) {
-                    global.attractionsArray.splice(i, 1);
-                }
+            var dm = new DataManager();
+            dm.removeFromFirebase(element).then(() => {
+                this.props.navigation.state.params.onGoBack();
+                this.props.navigation.goBack();
+            }).catch(error => {
+                console.warn(error);
             }
-            this.props.navigation.state.params.onGoBack();
-            this.props.navigation.goBack();
+            );
+        
         }
     }
     handleRatingChange(rating) {
-       // console.warn(rating);
         var newRating = rating;
         this.setState({ratingAverage: newRating});
         ratingChanged = true;

@@ -27,32 +27,31 @@ export default class DestinationsList extends Component {
         return !pos || item != ary[pos - 1];
       }),
       country: global.attractionsArray[0].country,
-      userRole: null,
+      userRole: this.props.navigation.state.params.role,
+      userKey: null
     }
     console.disableYellowBox = true;
+    this.getFromAsyncStorage();
+    
     this.listenForItems(this.itemsRef);
     
-  
-  }
+    }
   
     setUserRatings() {
       firebase.database().ref('/users/'+this.state.userKey+'/ratings').once('value', (snap) => {
+        var items = [];
           snap.forEach((childSnap) => {
-          setRatingForAttr(childSnap.val().attrId, childSnap.val().rating);
-          // if(childSnap.val().attrId == this.state.id) {
-          //     this.setState({ratingAverage: childSnap.val().rating});                     
-          // }
+          items.push({
+            attrId: childSnap.val().attrId,
+            rating: childSnap.val().rating
           });
-      });        
+          });
+          global.ratingsArray = items;
+          AsyncStorage.setItem("ratingsArray", JSON.stringify(items));          
 
-  }
-  setRatingForAttr(id, rating) {
-    for(var i = 0; i<global.attractionsArray.length; i++) {
-      if(global.attractionsArray[i].id == id) {
-        console.warn(id);
-        global.attractionsArray[i].rating = rating;
-      }
-    }
+      });     
+      
+
   }
   calculateRatingAverage() {
     global.items = global.attractionsArray;
@@ -98,7 +97,6 @@ export default class DestinationsList extends Component {
                 country: child.val().country,
                 name: child.val().name,
                 ratingAverage: child.val().ratingAverage,
-                rating: 0,
                 id: child.key
               });
             });
@@ -120,14 +118,24 @@ export default class DestinationsList extends Component {
 
   async getFromAsyncStorage() {
     try {
-      const value = await AsyncStorage.getItem("user_role");
-      if (value !== null){
-        this.setState({userRole : value});
+      const value2 = await AsyncStorage.getItem("user_key");
+      if (value2 !== null){
+        this.setState({userKey : JSON.parse(value2)});
 
       }
     } catch (error) {
       console.warn("error getting stuff");
     }
+
+    try {
+           const value = await AsyncStorage.getItem("attractionsArray");
+          if (value !== null){
+              global.attractionsArray = JSON.parse(value);
+              this.update();
+            }
+          } catch (error) {
+            console.warn("error getting stuff");
+          }
 
     
   }
@@ -140,8 +148,10 @@ export default class DestinationsList extends Component {
   }
   saveArray() {
     AsyncStorage.setItem("attractionsArray", JSON.stringify(global.attractionsArray));
+  
   }
   edit(destination){
+    this.setUserRatings();
       this.props.navigation.navigate("Destination", { dest: destination, userRole: this.state.userRole,
         onGoBack: () => this.update()
       });
