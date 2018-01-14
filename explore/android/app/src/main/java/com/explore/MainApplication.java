@@ -1,12 +1,10 @@
-package com.explorereactnative;
+package com.explore;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.chirag.RNMail.RNMail;
-import com.github.wuxudong.rncharts.MPAndroidChartPackage;
-import com.horcrux.svg.SvgPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -27,10 +25,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativePushNotificationPackage(),
             new RNMail(),
-            new MPAndroidChartPackage(),
-            new SvgPackage()
+            new ReactNativePushNotificationPackage()
       );
     }
 
