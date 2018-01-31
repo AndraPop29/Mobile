@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		44BF916921AC585FB9939D7C /* Pods_GameStoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16793DD4711C917644523A9 /* Pods_GameStoreApp.framework */; };
+		C0FB26D220222B3E003CDD45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26D120222B3E003CDD45 /* AppDelegate.swift */; };
+		C0FB26D420222B3E003CDD45 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26D320222B3E003CDD45 /* MainViewController.swift */; };
+		C0FB26D720222B3E003CDD45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FB26D520222B3E003CDD45 /* Main.storyboard */; };
+		C0FB26D920222B3E003CDD45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FB26D820222B3E003CDD45 /* Assets.xcassets */; };
+		C0FB26DC20222B3E003CDD45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FB26DA20222B3E003CDD45 /* LaunchScreen.storyboard */; };
+		C0FB26E420222E35003CDD45 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26E320222E35003CDD45 /* RestApiManager.swift */; };
+		C0FB26E6202230BB003CDD45 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26E5202230BB003CDD45 /* Endpoints.swift */; };
+		C0FB26EC2022338E003CDD45 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26EB2022338E003CDD45 /* Game.swift */; };
+		C0FB26F020223586003CDD45 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26EF20223586003CDD45 /* UIAlertController+Extensions.swift */; };
+		C0FB26F820224B8E003CDD45 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26F720224B8E003CDD45 /* CustomCell.swift */; };
+		C0FB26FA20224E43003CDD45 /* EmptyDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26F920224E43003CDD45 /* EmptyDataSourceView.swift */; };
+		C0FB26FC20224E99003CDD45 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26FB20224E99003CDD45 /* Button.swift */; };
+		C0FB26FE20225DDF003CDD45 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB26FD20225DDF003CDD45 /* EditViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1F10ED04AD45AF71BCECA64F /* Pods-GameStoreApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameStoreApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GameStoreApp/Pods-GameStoreApp.debug.xcconfig"; sourceTree = "<group>"; };
+		28646B73632B59060C77D02F /* Pods-GameStoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameStoreApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameStoreApp/Pods-GameStoreApp.release.xcconfig"; sourceTree = "<group>"; };
+		C0FB26CE20222B3E003CDD45 /* GameStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0FB26D120222B3E003CDD45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0FB26D320222B3E003CDD45 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C0FB26D620222B3E003CDD45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0FB26D820222B3E003CDD45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0FB26DB20222B3E003CDD45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0FB26DD20222B3E003CDD45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0FB26E320222E35003CDD45 /* RestApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
+		C0FB26E5202230BB003CDD45 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		C0FB26EB2022338E003CDD45 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		C0FB26EF20223586003CDD45 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		C0FB26F720224B8E003CDD45 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		C0FB26F920224E43003CDD45 /* EmptyDataSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSourceView.swift; sourceTree = "<group>"; };
+		C0FB26FB20224E99003CDD45 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		C0FB26FD20225DDF003CDD45 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		C16793DD4711C917644523A9 /* Pods_GameStoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameStoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0FB26CB20222B3E003CDD45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BF916921AC585FB9939D7C /* Pods_GameStoreApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FE44D48C3AF44A3BAFFE65A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C16793DD4711C917644523A9 /* Pods_GameStoreApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0FB26C520222B3E003CDD45 = {
+			isa = PBXGroup;
+			children = (
+				C0FB26D020222B3E003CDD45 /* GameStoreApp */,
+				C0FB26CF20222B3E003CDD45 /* Products */,
+				DB2622EF9E3F6AFD25D97D5D /* Pods */,
+				5FE44D48C3AF44A3BAFFE65A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C0FB26CF20222B3E003CDD45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26CE20222B3E003CDD45 /* GameStoreApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0FB26D020222B3E003CDD45 /* GameStoreApp */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26F620224B6A003CDD45 /* Components */,
+				C0FB26F420224931003CDD45 /* Extensions */,
+				C0FB26F320224901003CDD45 /* ViewControllers */,
+				C0FB26F220223EE5003CDD45 /* Models */,
+				C0FB26F120223CFA003CDD45 /* Common */,
+				C0FB26D120222B3E003CDD45 /* AppDelegate.swift */,
+				C0FB26D520222B3E003CDD45 /* Main.storyboard */,
+				C0FB26DD20222B3E003CDD45 /* Info.plist */,
+				C0FB26F520224947003CDD45 /* Supporting files */,
+			);
+			path = GameStoreApp;
+			sourceTree = "<group>";
+		};
+		C0FB26F120223CFA003CDD45 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26E320222E35003CDD45 /* RestApiManager.swift */,
+				C0FB26E5202230BB003CDD45 /* Endpoints.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C0FB26F220223EE5003CDD45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26EB2022338E003CDD45 /* Game.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C0FB26F320224901003CDD45 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26D320222B3E003CDD45 /* MainViewController.swift */,
+				C0FB26FD20225DDF003CDD45 /* EditViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C0FB26F420224931003CDD45 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26EF20223586003CDD45 /* UIAlertController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C0FB26F520224947003CDD45 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26D820222B3E003CDD45 /* Assets.xcassets */,
+				C0FB26DA20222B3E003CDD45 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		C0FB26F620224B6A003CDD45 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB26F720224B8E003CDD45 /* CustomCell.swift */,
+				C0FB26F920224E43003CDD45 /* EmptyDataSourceView.swift */,
+				C0FB26FB20224E99003CDD45 /* Button.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DB2622EF9E3F6AFD25D97D5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F10ED04AD45AF71BCECA64F /* Pods-GameStoreApp.debug.xcconfig */,
+				28646B73632B59060C77D02F /* Pods-GameStoreApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0FB26CD20222B3E003CDD45 /* GameStoreApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0FB26E020222B3E003CDD45 /* Build configuration list for PBXNativeTarget "GameStoreApp" */;
+			buildPhases = (
+				1E56CD5735087B00DB22A40A /* [CP] Check Pods Manifest.lock */,
+				C0FB26CA20222B3E003CDD45 /* Sources */,
+				C0FB26CB20222B3E003CDD45 /* Frameworks */,
+				C0FB26CC20222B3E003CDD45 /* Resources */,
+				32B6A54738AC3BCA0F971446 /* [CP] Embed Pods Frameworks */,
+				D47DF2FCB49B810053E5C66C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GameStoreApp;
+			productName = GameStoreApp;
+			productReference = C0FB26CE20222B3E003CDD45 /* GameStoreApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0FB26C620222B3E003CDD45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Andra;
+				TargetAttributes = {
+					C0FB26CD20222B3E003CDD45 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C0FB26C920222B3E003CDD45 /* Build configuration list for PBXProject "GameStoreApp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0FB26C520222B3E003CDD45;
+			productRefGroup = C0FB26CF20222B3E003CDD45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0FB26CD20222B3E003CDD45 /* GameStoreApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0FB26CC20222B3E003CDD45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0FB26DC20222B3E003CDD45 /* LaunchScreen.storyboard in Resources */,
+				C0FB26D920222B3E003CDD45 /* Assets.xcassets in Resources */,
+				C0FB26D720222B3E003CDD45 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E56CD5735087B00DB22A40A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GameStoreApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32B6A54738AC3BCA0F971446 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GameStoreApp/Pods-GameStoreApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GameStoreApp/Pods-GameStoreApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D47DF2FCB49B810053E5C66C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GameStoreApp/Pods-GameStoreApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0FB26CA20222B3E003CDD45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0FB26FE20225DDF003CDD45 /* EditViewController.swift in Sources */,
+				C0FB26D420222B3E003CDD45 /* MainViewController.swift in Sources */,
+				C0FB26FA20224E43003CDD45 /* EmptyDataSourceView.swift in Sources */,
+				C0FB26EC2022338E003CDD45 /* Game.swift in Sources */,
+				C0FB26D220222B3E003CDD45 /* AppDelegate.swift in Sources */,
+				C0FB26E6202230BB003CDD45 /* Endpoints.swift in Sources */,
+				C0FB26E420222E35003CDD45 /* RestApiManager.swift in Sources */,
+				C0FB26F820224B8E003CDD45 /* CustomCell.swift in Sources */,
+				C0FB26FC20224E99003CDD45 /* Button.swift in Sources */,
+				C0FB26F020223586003CDD45 /* UIAlertController+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C0FB26D520222B3E003CDD45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0FB26D620222B3E003CDD45 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0FB26DA20222B3E003CDD45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0FB26DB20222B3E003CDD45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0FB26DE20222B3E003CDD45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C0FB26DF20222B3E003CDD45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0FB26E120222B3E003CDD45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F10ED04AD45AF71BCECA64F /* Pods-GameStoreApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XVFAK7LNS;
+				INFOPLIST_FILE = GameStoreApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Andra.GameStoreApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0FB26E220222B3E003CDD45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28646B73632B59060C77D02F /* Pods-GameStoreApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XVFAK7LNS;
+				INFOPLIST_FILE = GameStoreApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Andra.GameStoreApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0FB26C920222B3E003CDD45 /* Build configuration list for PBXProject "GameStoreApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0FB26DE20222B3E003CDD45 /* Debug */,
+				C0FB26DF20222B3E003CDD45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0FB26E020222B3E003CDD45 /* Build configuration list for PBXNativeTarget "GameStoreApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0FB26E120222B3E003CDD45 /* Debug */,
+				C0FB26E220222B3E003CDD45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0FB26C620222B3E003CDD45 /* Project object */;
+}

@@ -29,7 +29,21 @@ export default class LoginForm extends Component {
         }
         return <Button onPress={this.onLoginPress.bind(this)} title="Log in" />;
     }
+        async getFromAsyncStorage() {
+        try {
+            const value2 = await AsyncStorage.getItem("user_key");
+            if (value2 !== null){
+                this.props.navigation.navigate("DestinationsList",  { role:  value2});                
+                
+            }
+            } catch (error) {
+            console.warn("error getting stuff");
+            }
+
+    }
     componentWillMount() {
+//        const ref = firebase.database().ref('explore-ee9b3');
+//        ref.keepSynced(true);
         firebase.initializeApp({
             apiKey: 'AIzaSyDY1AG-hCcgFRcXbqa5xLafRxMuJDa6XP4',
             authDomain: 'explore-ee9b3.firebaseapp.com',
@@ -39,6 +53,8 @@ export default class LoginForm extends Component {
             messagingSenderId: '488721145786'
         });
         //firebase.auth().signOut();
+        
+        this.getFromAsyncStorage();
         firebase.auth().onAuthStateChanged( user => {
             if(user) {
                     var userRole = null;

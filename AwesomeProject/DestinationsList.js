@@ -15,7 +15,6 @@ import {
   Picker, StyleSheet,
   AsyncStorage,
 } from 'react-native';
-import PushNotification from 'react-native-push-notification';
 //var PushNotification = require('react-native-push-notification');
 export default class DestinationsList extends Component {
   constructor(props) {
