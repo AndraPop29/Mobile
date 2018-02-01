@@ -12,17 +12,21 @@ import Alamofire
 
 enum Endpoint {
     
-    static let baseURL = "http://192.168.8.104:4001"
+    static let baseURL = "http://192.168.10.105:4001"
     
     case getAllItems
+    case getAllClientItems
     case deleteItem(id: Int)
     case addItem(name: String, quantity: Int, type: String, status: String)
+    case updateItem(id: Int, name: String, quantity: Int, type: String, status: String)
+    case buyItem(id: Int, quantity: Int)
     
     var method: HTTPMethod {
         switch self {
         case .deleteItem: return .post
         case .addItem: return .post
-            
+        case .updateItem: return .post
+        case .buyItem: return .post
         default: return .get
         }
     }
@@ -30,6 +34,8 @@ enum Endpoint {
     
     var path: String {
         switch self {
+        case .getAllClientItems:
+            return Endpoint.baseURL + "/games"
         case .getAllItems:
             return Endpoint.baseURL + "/all"
             
@@ -38,7 +44,17 @@ enum Endpoint {
             
         case .addItem:
             return Endpoint.baseURL + "/addGame"
+            
+        case .updateItem:
+            return Endpoint.baseURL + "/updateGame"
+            
+        case .buyItem:
+            return Endpoint.baseURL + "/buyGame"
+
         }
+        
+        
+        
         
     }
     
@@ -52,8 +68,21 @@ enum Endpoint {
                 "type": type,
                 "status": status
             ]
-            
+        case .updateItem(let id, let name, let quantity, let type, let status):
+            return [
+                "id": id,
+                "name": name,
+                "quantity": quantity,
+                "type": type,
+                "status": status
+            ]
+        case .buyItem(let id, let quantity):
+            return [
+                "id": id,
+                "quantity": quantity
+            ]
         case .deleteItem(let id) : return ["id": id]
+        
             
         default: return nil
         }

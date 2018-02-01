@@ -10,5 +10,5 @@ target 'GameStoreApp' do
   pod 'Alamofire'
   pod 'KeychainAccess'
   pod 'SwiftyJSON'
-
+  pod 'MBProgressHUD', '~> 1.1.0'
 end

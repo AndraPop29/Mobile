@@ -14,5 +14,6 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
     
+    @IBOutlet weak var buyButton: UIButton!
     
 }

@@ -24,10 +24,8 @@ final class RestApiManager {
                 switch response.result {
                 case .success(let value):
                     let decoder = JSONDecoder()
-                    
                     do {
                         let decodedObject = try decoder.decode(T.self, from: value)
-                        
                         completion(.success(decodedObject))
                         
                     } catch let error {

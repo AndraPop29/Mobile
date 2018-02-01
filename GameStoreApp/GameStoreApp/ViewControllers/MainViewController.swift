@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import MBProgressHUD
 
 class MainViewController: UIViewController {
     
@@ -39,7 +40,7 @@ class MainViewController: UIViewController {
 
     private func getItems() {
         let endpoint = Endpoint.getAllItems
-        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         RestApiManager.request(endpoint: endpoint) { (result: Result<[Game]>)  -> Void in
             switch result {
                 
@@ -50,13 +51,14 @@ class MainViewController: UIViewController {
             case .failure(let error):
                 UIAlertController.show(message: error.localizedDescription, on: self)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
         
     }
     
     private func delete(item id: Int, rowIndex: IndexPath) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
+        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let endpoint = Endpoint.deleteItem(id: id)
         RestApiManager.request(endpoint: endpoint) { (result: Result<Game>) -> Void in
             switch result {
@@ -68,8 +70,8 @@ class MainViewController: UIViewController {
                 print(error.localizedDescription)
                 UIAlertController.show(message: error.localizedDescription, on: self)
             }
-            
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            MBProgressHUD.hide(for: self.view, animated: true)
+            //UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 
@@ -79,7 +81,7 @@ extension MainViewController: EditViewControllerProtocol {
     
     func didAdd(item: (name: String, quantity: Int, type: String, status: String)) {
         let endpoint = Endpoint.addItem(name: item.name, quantity: item.quantity, type: item.type, status: item.status)
-        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         RestApiManager.request(endpoint: endpoint) { (result: Result<Game>)  -> Void in
             switch result {
                 
@@ -90,9 +92,29 @@ extension MainViewController: EditViewControllerProtocol {
             case .failure(let error):
                 UIAlertController.show(message: error.localizedDescription, on: self)
             }
-            
+            MBProgressHUD.hide(for: self.view, animated: true)
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func didUpdate(index: IndexPath, item: (id: Int, name: String, quantity: Int, type: String, status: String)) {
+//        let endpoint = Endpoint.updateItem(id: item.id, name: item.name, quantity: item.quantity, type: item.type, status: item.status)
+//
+//        RestApiManager.request(endpoint: endpoint) { (result: Result<Game>)  -> Void in
+//            switch result {
+//
+//            case .success(let item):
+//                self.dataSource[index] = item
+//                self.tableView.reloadData()
+//
+//            case .failure(let error):
+//                UIAlertController.show(message: error.localizedDescription, on: self)
+//            }
+//
+//            self.navigationController?.popViewController(animated: true)
+//        }
+        self.delete(item: item.id, rowIndex: index)
+        didAdd(item: (item.name, item.quantity, item.type, item.status))
     }
 }
 
@@ -129,9 +151,18 @@ extension MainViewController : UITableViewDataSource {
         cell.label1.text = item.name
         cell.label2.text = item.type.rawValue
         cell.label3.text = "\(item.quantity)"
-        
+        cell.buyButton.isHidden = true
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let editVC = EditViewController.instantiate()
+        editVC.delegate = self
+        editVC.item = self.dataSource[indexPath.row]
+        editVC.indexOfItem = indexPath
+        
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
     
     
