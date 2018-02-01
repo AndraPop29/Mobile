@@ -153,6 +153,11 @@
                                                     <rect key="frame" x="209" y="17" width="30" height="30"/>
                                                     <state key="normal" title="Buy"/>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7t-98-Gpg">
+                                                    <rect key="frame" x="128" y="16" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Return"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mJs-ge-cS6" firstAttribute="top" secondItem="u0w-RG-TME" secondAttribute="top" constant="22" id="4mm-J4-sbu"/>
@@ -172,6 +177,7 @@
                                             <outlet property="label1" destination="Bn7-0e-Szy" id="ZtF-nV-jwJ"/>
                                             <outlet property="label2" destination="j5F-TT-jUw" id="FnG-i8-iZl"/>
                                             <outlet property="label3" destination="mJs-ge-cS6" id="l1K-78-tcy"/>
+                                            <outlet property="returnButton" destination="M7t-98-Gpg" id="5vA-dR-Juq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -180,7 +186,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fVb-sv-ZyA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZrP-Jx-oKI"/>
+                    <navigationItem key="navigationItem" id="ZrP-Jx-oKI">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="ZLq-jd-elb">
+                            <connections>
+                                <action selector="seeRentals:" destination="8j2-Ax-RZX" id="jtz-Be-kdX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="My Games" id="dr8-lV-XKb">
+                            <connections>
+                                <action selector="seeMyGames:" destination="8j2-Ax-RZX" id="92K-i6-YB1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="GnP-6X-0S1" id="VHS-PG-4yT"/>
                     </connections>

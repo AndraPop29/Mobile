@@ -11,4 +11,5 @@ target 'GameStoreApp' do
   pod 'KeychainAccess'
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'Starscream', '~> 3.0.2'
 end

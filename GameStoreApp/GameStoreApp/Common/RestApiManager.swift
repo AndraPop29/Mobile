@@ -12,7 +12,7 @@ import Alamofire
 
 
 final class RestApiManager {
-    static func request<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T>) -> Void) {
+    static func requestWithResponseData<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T>) -> Void) {
         let path = endpoint.path
         let method = endpoint.method
         let parameters = endpoint.body
@@ -35,7 +35,30 @@ final class RestApiManager {
                 case .failure(let error): completion(.failure(error))
                 }
             }
+        
+    }
     
+    
+    static func requestWithoutResponseData(endpoint: Endpoint, completion: @escaping (Result<String?>) -> Void) {
+        let path = endpoint.path
+        let method = endpoint.method
+        let parameters = endpoint.body
+        let encoding = JSONEncoding.default
+        let headers = endpoint.headers
+        
+        Alamofire.request(path, method: method, parameters: parameters, encoding: encoding, headers: headers).responseData {
+            response in
+            switch response.result {
+            case .success( _):
+                completion(.success(nil))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+        
+        
     }
 }
 

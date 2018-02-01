@@ -9,11 +9,43 @@
 import UIKit
 import Alamofire
 import MBProgressHUD
+import Starscream
+import SwiftyJSON
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, WebSocketDelegate {
+    func websocketDidConnect(socket: WebSocketClient) {
+         print("websocket is connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("websocket is disconnected: \(error?.localizedDescription)")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        if let data = text.data(using: .utf8) {
+            if let json = try? JSON(data: data) {
+                let game = Game(id: Int(String(describing: json["id"]))!, name: String(describing: json["name"]), quantity: Int(String(describing: json["quantity"]))!, type: Type(rawValue: String(describing: json["type"]))!, status: Status(rawValue: String(describing: json["status"]))!)
+                self.dataSource.append(game)
+                self.tableView.reloadData()
+            }
+        }
+        
+//        if let dataFromString = text.data(using: .utf8, allowLossyConversion: false) {
+//            let json = try? JSON(data: dataFromString)
+        
+//            let game = Game(id: Int(String(json!["id"]))!, name: String(json!["name"]), quantity: Int(String(json!["quantity"]))!, type: Type.init(rawValue: json!["type"])!, status: Status.init(rawValue: json!["status"])!)
+//        }
+    
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("got some data: \(data.count)")
+    }
+    
     
     private var dataSource: [Game] = []
     var emptyView: EmptyDataSourceView?
+    var socket : WebSocket?
 
 
     @IBOutlet weak var tableView: UITableView!
@@ -21,12 +53,14 @@ class MainViewController: UIViewController {
     @IBAction func addButton(_ sender: Any) {
         let editVC = EditViewController.instantiate()
         editVC.delegate = self
-        
         self.navigationController?.pushViewController(editVC, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        socket = WebSocket(url: URL(string: "http://localhost:4001")!)
+        socket?.delegate = self
+        socket?.connect()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -41,7 +75,7 @@ class MainViewController: UIViewController {
     private func getItems() {
         let endpoint = Endpoint.getAllItems
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        RestApiManager.request(endpoint: endpoint) { (result: Result<[Game]>)  -> Void in
+        RestApiManager.requestWithResponseData(endpoint: endpoint) { (result: Result<[Game]>)  -> Void in
             switch result {
                 
             case .success(let games):
@@ -57,10 +91,9 @@ class MainViewController: UIViewController {
     }
     
     private func delete(item id: Int, rowIndex: IndexPath) {
-        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
         MBProgressHUD.showAdded(to: self.view, animated: true)
         let endpoint = Endpoint.deleteItem(id: id)
-        RestApiManager.request(endpoint: endpoint) { (result: Result<Game>) -> Void in
+        RestApiManager.requestWithResponseData(endpoint: endpoint) { (result: Result<Game>) -> Void in
             switch result {
             case .success(_):
                 self.dataSource.remove(at: rowIndex.row)
@@ -71,7 +104,6 @@ class MainViewController: UIViewController {
                 UIAlertController.show(message: error.localizedDescription, on: self)
             }
             MBProgressHUD.hide(for: self.view, animated: true)
-            //UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 
@@ -82,7 +114,7 @@ extension MainViewController: EditViewControllerProtocol {
     func didAdd(item: (name: String, quantity: Int, type: String, status: String)) {
         let endpoint = Endpoint.addItem(name: item.name, quantity: item.quantity, type: item.type, status: item.status)
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        RestApiManager.request(endpoint: endpoint) { (result: Result<Game>)  -> Void in
+        RestApiManager.requestWithResponseData(endpoint: endpoint) { (result: Result<Game>)  -> Void in
             switch result {
                 
             case .success(let idea):
