@@ -14,15 +14,22 @@ class TouristAttractionStatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setChart()
+        UserDataManager.shared.calculateRatingAverage().then {
+            attr -> Void in
+            self.setChart(attractions: attr)
+            }.catch {
+                error in
+                print(error)
+        }
     }
     
   
-    func setChart() {
+    func setChart(attractions: [TouristAttraction]) {
         
         let chart = PieChartView(frame: self.pieView.frame)
         // 2. generate chart data entries
-        let attractions = TouristAttractions.shared.getTop5Attractions()
+       
+        let attractions = attractions
         var track : [String] = []
         var money : [Double] = []
         for attraction in attractions {

@@ -8,42 +8,125 @@
 
 import UIKit
 import os.log
+import FirebaseDatabase
+import PromiseKit
+import FirebaseAuth
+import UserNotifications
+import MBProgressHUD
 
-class TouristAttractionsViewController: UITableViewController, UITextFieldDelegate {
+class TouristAttractionsViewController: UITableViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     var pickerView: UIPickerView?
-    @IBAction func addButtonAction(_ sender: Any) {
-       
-    }
+    let attrRef = Database.database().reference(withPath: "touristAttractions")
+    
     @IBOutlet weak var headerView: UIView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = nil
+        setupViews()
+        setupData()
+        pickerView = UIPickerView()
+        if UserDefaults.standard.string(forKey: "role")! == "ADMIN" {
+            setupViewsForAdmin()
+        }
+        self.pickerView?.delegate = self
+        self.pickerView?.dataSource = self
+        
+        Database.database().reference().observe(.value, with: { snapshot in
+            self.setupData()
+        })
+        notificationSetup()
+    }
+    
+    func notificationSetup() {
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                center.requestAuthorization(options: options) {
+                    (granted, error) in
+                    if !granted {
+                        print("Something went wrong")
+                    }
+                }
+            }
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Don't forget"
+        content.body = "Checkout the new destinations"
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 600,
+                                                        repeats: true)
+        
+        let identifier = "UYLLocalNotification"
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                // Something went wrong
+            }
+        })
+        center.delegate = self
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.actionIdentifier == UNNotificationDismissActionIdentifier {
+            // The user dismissed the notification without taking action
+        }
+        else if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            setupData()
+        }
+        
+        // Else handle any custom actions. . .
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+       
+    }
+    
+    func setupData() {
+        TouristAttractions.shared.loadAttractionsFromFirebase()
+            .then {
+                entities -> Void in
+                if (TouristAttractions.shared.attractionsList.count > 0 && ((self.countryTextField.text?.isEmpty)!) || !(self.countryTextField.text?.isEmpty)! && !TouristAttractions.shared.getCountries().contains(self.countryTextField.text!)) {
+                        self.countryTextField.text = TouristAttractions.shared.getCountries()[0]
+                        self.countryTextField.inputView = self.pickerView
+                }
+        
+                self.tableView.reloadData()
+            }.catch {
+                error in
+                print(error)
+        }
+    
+    }
+    
+    func setupViews() {
         let nibName = UINib(nibName: "TouristAttractionCell", bundle:nil)
-        tableView.register(nibName, forCellReuseIdentifier: "touristAttractionCell")
-        tableView.separatorStyle = .none
+        self.tableView.register(nibName, forCellReuseIdentifier: "touristAttractionCell")
+        self.tableView.separatorStyle = .none
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.leftBarButtonItem = nil
         headerView.backgroundColor = .white
-        let addBtn = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addTouristAttraction))
-        self.navigationItem.rightBarButtonItem  = addBtn
         let button = UIButton(type: .system)
         button.setTitle("Statistics", for: .normal)
         button.sizeToFit()
         button.addTarget(self, action: #selector(self.seeStatistics), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
         self.title = "Tourist Attractions"
-        if let savedAttractions = TouristAttractions.shared.loadAttractions() {
-            TouristAttractions.shared.attractionsList += savedAttractions
-        }
-        else {
-            loadMockData()
-        }
-        pickerView = UIPickerView()
-        self.pickerView?.delegate = self
-        self.pickerView?.dataSource = self
+    }
+    func setupViewsForAdmin() {
+        let addBtn = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(addTouristAttraction))
+        self.navigationItem.rightBarButtonItem  = addBtn
     }
     @objc func addTouristAttraction() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -54,16 +137,13 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     @objc func seeStatistics() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = mainStoryboard.instantiateViewController(withIdentifier: "touristAttractionStatisticsViewController") as? TouristAttractionStatisticsViewController {
-            navigationController?.pushViewController(controller, animated: true)
+            self.navigationController?.pushViewController(controller, animated: true)
         }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if TouristAttractions.shared.attractionsList.count > 0 {
-            countryTextField.text = TouristAttractions.shared.getCountries()[0]
-            countryTextField.inputView = pickerView
-        }
-       
+        
         tableView.reloadData()
     }
 
@@ -71,16 +151,6 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         super.didReceiveMemoryWarning()
     }
     
-    func loadMockData() {
-        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Collosseum", country: "Italy", city: "Rome" ,image: UIImage(named: "the-colloseum-andrey-starostin")!))
-        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Eiffel Tower", country: "France", city: "Paris", image: UIImage(named: "eiffel")!))
-        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Venice Canals", country: "Italy", city: "Venice", image: UIImage(named: "venice")!))
-         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Pompeii", country: "Italy", city: "Pompei", image: UIImage(named: "pompeii")!))
-         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Leaning Tower of Pisa", country: "Italy", city: "Pisa", image: UIImage(named: "towerPisa")!))
-         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Amalfi Coast", country: "Italy", city: "Campania", image: UIImage(named: "amalfi")!))
-         TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Vatican City", country: "Italy", city: "Vatican", image: UIImage(named: "vatican")!))
-        TouristAttractions.shared.addAttraction(attraction: TouristAttraction(name: "Palace of Versailles", country: "France", city: "Versailles", image: UIImage(named: "versailles")!))
-    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -102,12 +172,70 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TouristAttractionCell  else {
             fatalError("The dequeued cell is not an instance of TouristAttractionCell.")
         }
+
         cell.selectionStyle = .none
         let attraction = TouristAttractions.shared.getAttractions(fromCountry: countryTextField.text!)[indexPath.section]
         cell.touristAttraction = attraction
         cell.nameLabel.text = attraction.name
         cell.attractionImageView.image = attraction.image
-        cell.ratingControl.rating = Int(attraction.ratingAverage)
+        
+        let session = URLSession(configuration: .default)
+        
+        if let img = attraction.image {
+            cell.attractionImageView.image = img
+        }
+        else {
+        //creating a dataTask
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            let getImageFromUrl = session.dataTask(with: attraction.imageURL!) { (data, response, error) in
+
+                //if there is any error
+                if let e = error {
+                    //displaying the message
+                    print("Error Occurred: \(e)")
+
+                } else {
+                    //in case of now error, checking wheather the response is nil or not
+                    if (response as? HTTPURLResponse) != nil {
+
+                        //checking if the response contains an image
+                        if let imageData = data {
+                            DispatchQueue.main.async {
+                                //displaying the image
+                                print(imageData)
+                                cell.attractionImageView.image = UIImage(data: imageData)
+                                attraction.image = UIImage(data: imageData)
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                            }
+
+
+                        } else {
+                            print("Image file is currupted")
+                        }
+                    } else {
+                        print("No response from server")
+                    }
+                }
+            }
+            getImageFromUrl.resume()
+
+        }
+
+        //starting the download task
+
+        
+        UserDataManager.shared.getRatingFor(attractionId: attraction.Id!).then {
+            rating -> Void in
+            if let rat = rating {
+                cell.ratingControl.rating = rat
+            } else {
+                cell.ratingControl.rating = 0
+            }
+
+        }.catch {
+            error in
+            print(error)
+        }
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -125,6 +253,8 @@ class TouristAttractionsViewController: UITableViewController, UITextFieldDelega
     
 }
 
+
+
 extension TouristAttractionsViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -139,7 +269,9 @@ extension TouristAttractionsViewController : UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryTextField.text = TouristAttractions.shared.getCountries()[row]
+        if TouristAttractions.shared.attractionsList.count > 0 {
+            countryTextField.text = TouristAttractions.shared.getCountries()[row]
+        }
         countryTextField.resignFirstResponder()
         tableView.reloadData()
     }

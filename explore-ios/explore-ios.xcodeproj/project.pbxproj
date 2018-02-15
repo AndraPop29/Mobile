@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F11FB04E00005E4A98 /* LoginViewController.swift */; };
 		C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01956F41FB0588B005E4A98 /* SignUpViewController.swift */; };
+		C04826B51FE92F700011B975 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04826B41FE92F700011B975 /* KeychainPasswordItem.swift */; };
 		C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051A1D51FBA271400E7925A /* TouristAttractions.swift */; };
 		C072C2621FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072C2611FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift */; };
 		C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */; };
 		C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB021FB320FB0023CB25 /* TouristAttraction.swift */; };
 		C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */; };
 		C07BD2121FC40D2200911750 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07BD2111FC40D2200911750 /* Images.xcassets */; };
+		C07C52BA1FFE2FA300B8BB67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07C52B91FFE2FA300B8BB67 /* User.swift */; };
+		C07C52BD1FFE37D300B8BB67 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07C52BC1FFE37D300B8BB67 /* UserDataManager.swift */; };
 		C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */; };
 		C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */; };
 		C084021B1FBAC82200FB662C /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C084021A1FBAC82200FB662C /* RatingControl.swift */; };
@@ -26,6 +29,7 @@
 		C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AF25801FB045590067B1C8 /* AppDelegate.swift */; };
 		C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25841FB045590067B1C8 /* Main.storyboard */; };
 		C0AF258B1FB045590067B1C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */; };
+		C0F2291C2008A65400EFDA64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F2291B2008A65400EFDA64 /* GoogleService-Info.plist */; };
 		EBB01D9407053DC3C3AEC83C /* Pods_explore_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250A733EE36B1CDAF9DF5868 /* Pods_explore_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,12 +39,15 @@
 		7E995AF7A6F580EDEAC59808 /* Pods-explore-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-explore-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		C01956F11FB04E00005E4A98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C01956F41FB0588B005E4A98 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C04826B41FE92F700011B975 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		C051A1D51FBA271400E7925A /* TouristAttractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractions.swift; sourceTree = "<group>"; };
 		C072C2611FBB77BD00C4FED9 /* AttractionPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionPreferencesViewController.swift; sourceTree = "<group>"; };
 		C078CAFD1FB31DA30023CB25 /* TouristAttractionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionsViewController.swift; sourceTree = "<group>"; };
 		C078CB021FB320FB0023CB25 /* TouristAttraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttraction.swift; sourceTree = "<group>"; };
 		C078CB041FB325580023CB25 /* TouristAttractionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionDetailsViewController.swift; sourceTree = "<group>"; };
 		C07BD2111FC40D2200911750 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C07C52B91FFE2FA300B8BB67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C07C52BC1FFE37D300B8BB67 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		C08402161FBAC6C000FB662C /* TouristAttractionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristAttractionCell.swift; sourceTree = "<group>"; };
 		C08402171FBAC6C000FB662C /* TouristAttractionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouristAttractionCell.xib; sourceTree = "<group>"; };
 		C084021A1FBAC82200FB662C /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -54,6 +61,7 @@
 		C0AF25851FB045590067B1C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0AF258A1FB045590067B1C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0AF258C1FB045590067B1C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0F2291B2008A65400EFDA64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,14 @@
 			path = userRegistration;
 			sourceTree = "<group>";
 		};
+		C04826B61FE92F990011B975 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C04826B41FE92F700011B975 /* KeychainPasswordItem.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		C072C25F1FBB778A00C4FED9 /* statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,8 +158,17 @@
 			isa = PBXGroup;
 			children = (
 				C078CB021FB320FB0023CB25 /* TouristAttraction.swift */,
+				C07C52B91FFE2FA300B8BB67 /* User.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		C07C52BB1FFE37BF00B8BB67 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				C07C52BC1FFE37D300B8BB67 /* UserDataManager.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		C08402151FBAC68800FB662C /* TouristAttractionCell */ = {
@@ -231,12 +256,15 @@
 		C0AF257F1FB045590067B1C8 /* explore-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C07C52BB1FFE37BF00B8BB67 /* Persistence */,
+				C04826B61FE92F990011B975 /* utils */,
 				C084021F1FBADD8600FB662C /* general */,
 				C01956EF1FB04DD0005E4A98 /* scenes */,
 				C0AF25801FB045590067B1C8 /* AppDelegate.swift */,
 				C0AF25841FB045590067B1C8 /* Main.storyboard */,
 				C07BD2111FC40D2200911750 /* Images.xcassets */,
 				C0AF25891FB045590067B1C8 /* LaunchScreen.storyboard */,
+				C0F2291B2008A65400EFDA64 /* GoogleService-Info.plist */,
 				C0AF258C1FB045590067B1C8 /* Info.plist */,
 			);
 			path = "explore-ios";
@@ -317,6 +345,7 @@
 				C0A8FFD41FB04B440092BEE2 /* RegistrationTextFieldView.xib in Resources */,
 				C0AF25861FB045590067B1C8 /* Main.storyboard in Resources */,
 				C08402191FBAC6C000FB662C /* TouristAttractionCell.xib in Resources */,
+				C0F2291C2008A65400EFDA64 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +379,23 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-explore-ios/Pods-explore-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -387,7 +428,9 @@
 				C08402181FBAC6C000FB662C /* TouristAttractionCell.swift in Sources */,
 				C078CB031FB320FB0023CB25 /* TouristAttraction.swift in Sources */,
 				C09FCEA41FBC1810006759EA /* TouristAttractionStatisticsViewController.swift in Sources */,
+				C07C52BA1FFE2FA300B8BB67 /* User.swift in Sources */,
 				C01956F21FB04E00005E4A98 /* LoginViewController.swift in Sources */,
+				C04826B51FE92F700011B975 /* KeychainPasswordItem.swift in Sources */,
 				C01956F51FB0588B005E4A98 /* SignUpViewController.swift in Sources */,
 				C078CB051FB325580023CB25 /* TouristAttractionDetailsViewController.swift in Sources */,
 				C0A8FFD61FB04BE50092BEE2 /* BottomBorderTextField.swift in Sources */,
@@ -397,6 +440,7 @@
 				C051A1D61FBA271400E7925A /* TouristAttractions.swift in Sources */,
 				C078CAFE1FB31DA30023CB25 /* TouristAttractionsViewController.swift in Sources */,
 				C0AF25811FB045590067B1C8 /* AppDelegate.swift in Sources */,
+				C07C52BD1FFE37D300B8BB67 /* UserDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NWS8B86RUL;
 				INFOPLIST_FILE = "explore-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrapop.explore-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -553,6 +598,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NWS8B86RUL;
 				INFOPLIST_FILE = "explore-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrapop.explore-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";

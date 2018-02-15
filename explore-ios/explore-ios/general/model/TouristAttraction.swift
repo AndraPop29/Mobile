@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 import os.log
-
-var counter = -1
+import Firebase
+import MBProgressHUD
 
 //MARK: Types
 
@@ -25,41 +25,59 @@ struct PropertyKey {
 
 class TouristAttraction: NSObject, NSCoding {
  
-    var Id: Int?
+    var Id: String?
     var name: String
     var country: String
     var city: String
+    var imageURL: URL?
     var image: UIImage?
     var ratingAverage:Double = 0
+    var ref: DatabaseReference?
     
-    init(id:Int?, name: String, country: String, city: String, image: UIImage?, average: Double?) {
-        counter = counter + 1
-        self.Id = id != nil ? id! : counter
+    
+    init(snapshot: DataSnapshot) {
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        Id = snapshot.key
+        name = snapshotValue["name"] as! String
+        country = snapshotValue["country"] as! String
+        city = snapshotValue["city"] as! String
+        ratingAverage = snapshotValue["ratingAverage"] as! Double
+        if let stringUrl = snapshotValue["imageURL"] as? String  {
+            imageURL = URL(string: stringUrl)
+        }
+        ref = snapshot.ref
+        
+    }
+    
+
+    
+    init(id:String?, name: String, country: String, city: String, image: UIImage?, average: Double?) {
+        self.Id = id
         self.name = name
         self.country = country
         self.city = city
         self.image = image
         self.ratingAverage = average != nil ? average! : 0.0
+        self.ref = nil
     }
     
     init(name: String, country: String, city: String, image: UIImage?) {
-        counter += 1
-        self.Id = counter
         self.name = name
         self.country = country
         self.city = city
         self.image = image
+        self.ref = nil
     }
     
     init(name: String, country: String, city: String) {
-        counter += 1
-        self.Id = counter
         self.name = name
         self.country = country
         self.city = city
+        self.ref = nil
     }
     
     func rateTouristAttraction(number: Double) {
+ 
         if self.ratingAverage != 0 {
             self.ratingAverage = (self.ratingAverage + number)/2
         } else {
@@ -83,13 +101,24 @@ class TouristAttraction: NSObject, NSCoding {
             os_log("Unable to decode the name for a attraction object.", log: OSLog.default, type: .debug)
             return nil
         }
-        let decodedId = aDecoder.decodeObject(forKey: PropertyKey.id) as? Int
+        let decodedId = aDecoder.decodeObject(forKey: PropertyKey.id) as? String
         let decodedCountry = aDecoder.decodeObject(forKey: PropertyKey.country) as! String
         let decodedCity = aDecoder.decodeObject(forKey: PropertyKey.city) as! String
         let decodedImage = aDecoder.decodeObject(forKey: PropertyKey.image) as? UIImage
         let decodedAverage = aDecoder.decodeDouble(forKey:  PropertyKey.ratingAverage)
         self.init(id: decodedId, name: decodedName, country: decodedCountry, city: decodedCity, image: decodedImage, average: decodedAverage)
 
+    }
+    
+    func toAnyObject() -> Any {
+        return [
+            "id": Id,
+            "name": name,
+            "country": country,
+            "city": city,
+            "ratingAverage": ratingAverage,
+            "imageURL": String(describing: imageURL!)
+        ]
     }
     
     //MARK: Archiving Paths

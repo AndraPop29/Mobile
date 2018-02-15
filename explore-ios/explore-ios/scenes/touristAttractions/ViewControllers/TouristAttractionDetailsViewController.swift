@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import Photos
+import FirebaseDatabase
 
 class TouristAttractionDetailsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet weak var cityTextField: UITextField!
@@ -17,10 +19,11 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     @IBOutlet weak var countryTextField: UITextField!
     var touristAttraction: TouristAttraction?
     var attractionIndex: Int?
+    let ref = Database.database().reference(withPath: "touristAttractions")
     
     @objc func deleteTouristAttraction() {
         //touristAttractions.sha
-        TouristAttractions.shared.removeBy(id: (touristAttraction?.Id)!)
+        TouristAttractions.shared.remove(attraction: touristAttraction!)
         TouristAttractions.shared.saveAttractions()
         navigationController?.popViewController(animated: true)
     }
@@ -33,15 +36,27 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
         cityTextField.delegate = self
         editButton.setTitle("SAVE", for: .normal)
         attractionImage.isUserInteractionEnabled = true
+        
         if let attraction = touristAttraction {
             nameTextField.text = touristAttraction?.name
             countryTextField.text = touristAttraction?.country
             cityTextField.text = touristAttraction?.city
             attractionImage.image = attraction.image
             
-            let deleteBtn = UIBarButtonItem(image: UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(deleteTouristAttraction))
-            deleteBtn.tintColor = .black
-            self.navigationItem.rightBarButtonItem  = deleteBtn
+            if (UserDefaults.standard.string(forKey: "role") == "ADMIN") {
+                let deleteBtn = UIBarButtonItem(image: UIImage(named: "trash")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(deleteTouristAttraction))
+                deleteBtn.tintColor = .black
+                self.navigationItem.rightBarButtonItem  = deleteBtn
+            } else {
+                editButton.isUserInteractionEnabled = false
+                editButton.isHidden = true
+                nameTextField.isUserInteractionEnabled = false
+                countryTextField.isUserInteractionEnabled = false
+                cityTextField.isUserInteractionEnabled = false
+                attractionImage.isUserInteractionEnabled = false
+                self.navigationItem.rightBarButtonItem  = nil
+
+            }
         } else {
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -61,22 +76,31 @@ class TouristAttractionDetailsViewController: UIViewController, UITextFieldDeleg
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Hide the keyboard.
         nameTextField.resignFirstResponder()
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
+        if let _ = Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") {
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    let imagePickerController = UIImagePickerController()
+                    imagePickerController.sourceType = .photoLibrary
+                    imagePickerController.delegate = self
+                    self.present(imagePickerController, animated: true, completion: nil)
+                }
+            })
+        }
     }
     
     @IBAction func saveButtonAction(_ sender: Any) {
         let attraction : TouristAttraction
         if nameTextField.text != "" && countryTextField.text != "" && cityTextField.text != "" {
-            let image = attractionImage.image //{
+            let image = attractionImage.image
             attraction = TouristAttraction(id: nil, name: nameTextField.text!, country: countryTextField.text!, city: cityTextField.text!, image: image, average: touristAttraction?.ratingAverage)
+            attraction.imageURL = touristAttraction?.imageURL
             if attractionIndex != nil {
                 TouristAttractions.shared.updateAttraction(withId: (touristAttraction?.Id)!, attraction: attraction) // update
             } else {
                 TouristAttractions.shared.addAttraction(attraction: attraction) // add new
             }
+            
             TouristAttractions.shared.saveAttractions()
             navigationController?.popViewController(animated: true)
         } else {

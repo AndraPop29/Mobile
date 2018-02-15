@@ -14,7 +14,7 @@ class RatingControl: UIStackView {
     var rating = 0 {
         didSet {
             if let view = self.superview?.superview?.superview as? TouristAttractionCell {
-                TouristAttractions.shared.rateAttraction(named: (view.touristAttraction?.name)!, with: Double(rating))
+                UserDataManager.shared.updateRatings(for: UserDefaults.standard.string(forKey: "userId")!, ratings: [(view.touristAttraction?.Id)! : rating])
             }
             updateButtonSelectionStates()
         }
